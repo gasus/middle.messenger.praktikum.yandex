@@ -6,12 +6,17 @@ import { entryInput } from '../../components/entryInput/index';
 import { customButton } from '../../components/customButton/index';
 import { InputData } from '../../types/InputData';
 
+type Props = {
+    element: HTMLElement;
+    changeTabHandler: (isRegistration: { isRegistration?: boolean }) => void;
+};
+
 const formConfig: InputData[] = [
     { label: 'Логин', name: 'login', type: 'text' },
     { label: 'Пароль', name: 'password', type: 'password' },
 ];
 
-const getLoginPage = (element: HTMLElement) => {
+export const getLoginPage = ({ element, changeTabHandler }: Props) => {
     const wrapper = entryWrapper();
 
     const header = entryHeader({ label: 'Вход' });
@@ -23,13 +28,12 @@ const getLoginPage = (element: HTMLElement) => {
 
     const footer = entryFooter();
     customButton({ element: footer, label: 'Авторизоваться', classType: 'blue-white' });
-    customButton({ element: footer, label: 'Нет аккаунта?', classType: 'white-blue', link: '/registration.html' });
+    customButton({ element: footer, label: 'Нет аккаунта?', classType: 'white-blue', onClick: () => changeTabHandler({ isRegistration: true }) });
 
     wrapper.appendChild(header);
     wrapper.appendChild(form);
     wrapper.appendChild(footer);
 
+    element.innerHTML = '';
     element.appendChild(wrapper);
 };
-
-export default getLoginPage;

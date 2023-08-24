@@ -18,7 +18,7 @@ const mockChanels = [
         daysFromLastMessage: 1,
         lastMessage: 'Спустя 2 месяца произошло то, чего "совсем никто не ожидал". Будущее туманно и непонятно, что же делать и как дальше жить?',
         lastMessageFromYou: false,
-        unreadCount: 1,
+        unreadCount: 999,
     },
     {
         img: '',
@@ -170,8 +170,12 @@ export const chatChanels = () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'chat-chanels';
 
+    const onClick = () => {
+        console.log('onClick');
+    };
+
     mockChanels.forEach((i) => {
-        chatChanelPreview({ element: wrapper, ...i });
+        chatChanelPreview({ element: wrapper, ...i, onClick: onClick });
     });
 
     return wrapper;

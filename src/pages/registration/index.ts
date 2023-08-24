@@ -7,6 +7,11 @@ import { entryInput } from '../../components/entryInput/index';
 import { InputData } from '../../types/InputData';
 import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
 
+type Props = {
+    element: HTMLElement;
+    changeTabHandler: (isRegistration: { isRegistration?: boolean }) => void;
+};
+
 const formConfig: InputData[] = [
     { label: 'Почта', name: 'email', type: 'text' },
     { label: 'Логин', name: 'login', type: 'text' },
@@ -17,7 +22,7 @@ const formConfig: InputData[] = [
     { label: 'Пароль (еще раз)', name: 'password', type: 'password' },
 ];
 
-const getRegistrationPage = (element: HTMLElement) => {
+export const getRegistrationPage = ({ element, changeTabHandler }: Props) => {
     const wrapper = entryWrapper();
 
     const header = entryHeader({ label: 'Регистрация' });
@@ -28,14 +33,13 @@ const getRegistrationPage = (element: HTMLElement) => {
     });
 
     const footer = entryFooter();
-    customButton({ element: footer, label: 'Зарегистрироваться', classType: 'blue' });
-    customButton({ element: footer, label: 'Войти', classType: 'white', link: '/' });
+    customButton({ element: footer, label: 'Зарегистрироваться', classType: 'blue-white' });
+    customButton({ element: footer, label: 'Войти', classType: 'white-blue', onClick: () => changeTabHandler({ isRegistration: false }) });
 
     wrapper.appendChild(header);
     wrapper.appendChild(form);
     wrapper.appendChild(footer);
 
+    element.innerHTML = '';
     element.appendChild(wrapper);
 };
-
-getRegistrationPage(document.querySelector<HTMLElement>('#app')!);
