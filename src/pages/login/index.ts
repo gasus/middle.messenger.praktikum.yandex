@@ -1,30 +1,28 @@
+import { entryWrapper } from '../../components/entryWrapper/index';
+import { entryHeader } from '../../components/entryHeader/index';
+import { entryForm } from '../../components/entryForm/index';
+import { entryFooter } from '../../components/entryFooter/index';
 import addButton from '../../components/button/index';
 import addInput from '../../components/input/index';
-import './style.less';
 
-const getLoginPage = (element: HTMLButtonElement) => {
-    const login = document.createElement('div');
-    login.className = 'login';
+const getLoginPage = (element: HTMLElement) => {
+    const wrapper = entryWrapper();
 
-    const loginHeader = document.createElement('div');
-    loginHeader.className = 'login-header';
-    loginHeader.textContent = 'Вход';
+    const header = entryHeader({ label: 'Вход' });
 
-    const loginForm = document.createElement('form');
-    loginForm.className = 'login-form';
-    addInput({ element: loginForm, label: 'Логин', name: 'login', type: 'text' });
-    addInput({ element: loginForm, label: 'Пароль', name: 'password', type: 'password' });
+    const form = entryForm();
+    addInput({ element: form, label: 'Логин', name: 'login', type: 'text' });
+    addInput({ element: form, label: 'Пароль', name: 'password', type: 'password' });
 
-    const loginFooter = document.createElement('div');
-    loginFooter.className = 'login-footer';
-    addButton({ element: loginFooter, label: 'Авторизоваться', classType: 'blue' });
-    addButton({ element: loginFooter, label: 'Нет аккаунта?', classType: 'white' });
+    const footer = entryFooter();
+    addButton({ element: footer, label: 'Авторизоваться', classType: 'blue' });
+    addButton({ element: footer, label: 'Нет аккаунта?', classType: 'white', link: '/registration.html' });
 
-    login.appendChild(loginHeader);
-    login.appendChild(loginForm);
-    login.appendChild(loginFooter);
+    wrapper.appendChild(header);
+    wrapper.appendChild(form);
+    wrapper.appendChild(footer);
 
-    element.appendChild(login);
+    element.appendChild(wrapper);
 };
 
 export default getLoginPage;
