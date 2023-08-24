@@ -14,11 +14,11 @@ const getRegistrationPage = (element: HTMLElement) => {
     const form = entryForm();
     addInput({ element: form, label: 'Почта', name: 'email', type: 'text' });
     addInput({ element: form, label: 'Логин', name: 'login', type: 'text' });
-    addInput({ element: form, label: 'Имя', name: 'firstName', type: 'text' });
-    addInput({ element: form, label: 'Фамилия', name: 'secondName', type: 'text' });
+    addInput({ element: form, label: 'Имя', name: 'first_name', type: 'text' });
+    addInput({ element: form, label: 'Фамилия', name: 'second_name', type: 'text' });
     addInput({ element: form, label: 'Телефон', name: 'phone', type: 'text' });
     addInput({ element: form, label: 'Пароль', name: 'password', type: 'password' });
-    addInput({ element: form, label: 'Пароль (еще раз)', name: 'aprovePassword', type: 'password' });
+    addInput({ element: form, label: 'Пароль (еще раз)', name: 'password', type: 'password' });
 
     const footer = entryFooter();
     addButton({ element: footer, label: 'Зарегистрироваться', classType: 'blue' });
