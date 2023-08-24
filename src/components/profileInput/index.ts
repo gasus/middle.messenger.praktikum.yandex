@@ -1,7 +1,7 @@
-import { UserData } from '../../types/UserData';
+import { InputData } from '../../types/InputData';
 import './style.less';
 
-type Props = UserData & {
+type Props = InputData & {
     element: HTMLElement;
     disabled?: boolean;
 };

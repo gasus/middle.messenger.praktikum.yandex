@@ -1,4 +1,4 @@
-export type UserData = {
+export type InputData = {
     label: string;
     name: string;
     type: 'text' | 'password';

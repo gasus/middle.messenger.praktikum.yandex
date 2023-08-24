@@ -1,9 +1,9 @@
-import { UserData } from '../../types/UserData';
+import { InputData } from '../../types/InputData';
 import { profileInput } from '../profileInput/index';
 import './style.less';
 
 type Props = {
-    data: UserData[];
+    data: InputData[];
     isEdit?: boolean;
 };
 
@@ -12,8 +12,7 @@ export const profileForm = ({ data, isEdit }: Props) => {
     form.className = `profile-form`;
 
     data.forEach((i) => {
-        const { label, name, type, value } = i;
-        profileInput({ element: form, label: label, name: name, type: type, value: value, disabled: !isEdit });
+        profileInput({ element: form, disabled: !isEdit, ...i });
     });
 
     return form;

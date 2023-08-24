@@ -1,10 +1,8 @@
+import { InputData } from '../../types/InputData';
 import './style.less';
 
-type Props = {
+type Props = InputData & {
     element: HTMLElement;
-    label: string;
-    name: string;
-    type: 'text' | 'password';
 };
 
 export const entryInput = ({ element, label, type, name }: Props) => {
