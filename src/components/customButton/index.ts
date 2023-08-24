@@ -7,7 +7,7 @@ type Props = {
     link?: string;
 };
 
-const addButton = ({ element, label, classType, link }: Props) => {
+export const customButton = ({ element, label, classType, link }: Props) => {
     const button = document.createElement('button');
     button.textContent = label;
     button.className = `button button-${classType}`;
@@ -19,5 +19,3 @@ const addButton = ({ element, label, classType, link }: Props) => {
 
     element.appendChild(button);
 };
-
-export default addButton;

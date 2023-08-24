@@ -1,4 +1,4 @@
-import addButton from '../button/index';
+import { customButton } from '../customButton/index';
 import './style.less';
 
 type Props = {
@@ -21,7 +21,7 @@ export const errorInfo = ({ number, description }: Props) => {
 
     wrapper.appendChild(errorNum);
     wrapper.appendChild(errorDescription);
-    addButton({ element: wrapper, label: 'Назад к чатам', classType: 'white', link: '/' });
+    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white', link: '/' });
 
     return wrapper;
 };
