@@ -7,10 +7,13 @@ type Props = {
 };
 
 const renderPage = ({ isRegistration }: Props) => {
+    const app = document.querySelector<HTMLElement>('#app')!;
+    app.innerHTML = '';
+
     if (isRegistration) {
-        getRegistrationPage({ element: document.querySelector<HTMLElement>('#app')!, changeTabHandler: renderPage });
+        getRegistrationPage({ element: app, changeTabHandler: renderPage });
     } else {
-        getLoginPage({ element: document.querySelector<HTMLElement>('#app')!, changeTabHandler: renderPage });
+        getLoginPage({ element: app, changeTabHandler: renderPage });
     }
 }
 
