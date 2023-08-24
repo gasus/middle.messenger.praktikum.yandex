@@ -11,6 +11,7 @@ export const profileAvatar = ({ img, userName }: Props) => {
 
     const avatar = document.createElement('div');
     avatar.className = 'profile-avatar-img';
+    if (img) avatar.nodeValue = img; // TODO: Временная заглушка
 
     const name = document.createElement('div');
     name.className = 'profile-avatar-name';
