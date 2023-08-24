@@ -21,7 +21,7 @@ export const errorInfo = ({ number, description }: Props) => {
 
     wrapper.appendChild(errorNum);
     wrapper.appendChild(errorDescription);
-    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white', link: '/' });
+    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', link: '/' });
 
     return wrapper;
 };
