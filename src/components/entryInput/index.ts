@@ -7,7 +7,7 @@ type Props = {
     type: 'text' | 'password';
 };
 
-const addInput = ({ element, label, type, name }: Props) => {
+export const entryInput = ({ element, label, type, name }: Props) => {
     const inputWrapper = document.createElement('div');
     inputWrapper.className = `input-wrapper`;
 
@@ -42,5 +42,3 @@ const addInput = ({ element, label, type, name }: Props) => {
 
     element.appendChild(inputWrapper);
 };
-
-export default addInput;
