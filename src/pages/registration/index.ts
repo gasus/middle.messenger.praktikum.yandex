@@ -40,6 +40,5 @@ export const getRegistrationPage = ({ element, changeTabHandler }: Props) => {
     wrapper.appendChild(form);
     wrapper.appendChild(footer);
 
-    element.innerHTML = '';
     element.appendChild(wrapper);
 };
