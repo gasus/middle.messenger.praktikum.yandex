@@ -22,8 +22,8 @@ const getLoginPage = (element: HTMLElement) => {
     });
 
     const footer = entryFooter();
-    customButton({ element: footer, label: 'Авторизоваться', classType: 'blue' });
-    customButton({ element: footer, label: 'Нет аккаунта?', classType: 'white', link: '/registration.html' });
+    customButton({ element: footer, label: 'Авторизоваться', classType: 'blue-white' });
+    customButton({ element: footer, label: 'Нет аккаунта?', classType: 'white-blue', link: '/registration.html' });
 
     wrapper.appendChild(header);
     wrapper.appendChild(form);
