@@ -3,11 +3,16 @@ import './style.less';
 
 type Props = ChanelPreview & {
     element: HTMLElement;
+    onClick?: () => void;
 };
 
-export const chatChanelPreview = ({ element, chanelName, lastMessage, date, unreadCount }: Props) => {
+export const chatChanelPreview = ({ element, chanelName, lastMessage, date, unreadCount, onClick }: Props) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'chanel-preview-wrapper';
+
+    wrapper.addEventListener("click", () => {
+        onClick?.();
+    });
 
     const chanelImg = document.createElement('div');
     chanelImg.className = 'chanel-preview-img';
@@ -34,7 +39,7 @@ export const chatChanelPreview = ({ element, chanelName, lastMessage, date, unre
     chanelMessageDate.textContent = date; // TODO: Добавить изменения вида даты в зависимости от того сколько времени прошло с последнего сообщения, свойство daysFromLastMessage
 
     chanelMessageInfoWrapper.appendChild(chanelMessageDate);
-    
+
     if (unreadCount) {
         const chanelUnreadCount = document.createElement('div');
         chanelUnreadCount.className = 'chanel-preview-unread-count';
