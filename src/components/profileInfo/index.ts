@@ -1,4 +1,4 @@
-import { UserData } from '../../types/UserData';
+import { InputData } from '../../types/InputData';
 import { profileAvatar } from '../profileAvatar/index';
 import { profileForm } from '../profileForm/index';
 import './style.less';
@@ -7,7 +7,7 @@ type Props = {
     isEdit?: boolean;
 };
 
-const mockData: UserData[] = [
+const mockData: InputData[] = [
     { label: 'Почта', name: 'email', type: 'text', value: 'mail@ya.com' },
     { label: 'Логин', name: 'login', type: 'text', value: 'ololosha' },
     { label: 'Имя', name: 'first_name', type: 'text', value: 'Имя' },
