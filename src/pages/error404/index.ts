@@ -1,10 +1,9 @@
 import { errorInfo } from '../../components/errorInfo/index';
-import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
+import { app } from '../../main';
 
-const getError404 = (element: HTMLElement) => {
-    const error = errorInfo({ number: '404', description: 'Не туда попали' });
+export const renderError404 = () => {
+    const error = errorInfo({ number: '404', description: 'Запрашиваемой страницы не существует, как и смысла в жизни' });
 
-    element.appendChild(error);
+    app.innerHTML = '';
+    app.appendChild(error);
 };
-
-getError404(document.querySelector<HTMLElement>('#app')!);

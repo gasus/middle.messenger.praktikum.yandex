@@ -1,15 +1,15 @@
-import { entryWrapper } from '../../components/entryWrapper/index';
-import { entryHeader } from '../../components/entryHeader/index';
-import { entryForm } from '../../components/entryForm/index';
-import { entryFooter } from '../../components/entryFooter/index';
-import { customButton } from '../../components/customButton/index';
-import { entryInput } from '../../components/entryInput/index';
-import { InputData } from '../../types/InputData';
-import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
+import { entryWrapper } from '../../../components/entryWrapper/index';
+import { entryHeader } from '../../../components/entryHeader/index';
+import { entryForm } from '../../../components/entryForm/index';
+import { entryFooter } from '../../../components/entryFooter/index';
+import { customButton } from '../../../components/customButton/index';
+import { entryInput } from '../../../components/entryInput/index';
+import { InputData } from '../../../types/InputData';
+import { EntryPageProps } from '../../../types/EntryPageProps';
 
 type Props = {
     element: HTMLElement;
-    changeTabHandler: (isRegistration: { isRegistration?: boolean }) => void;
+    changeTabHandler: (entryView: EntryPageProps) => void;
 };
 
 const formConfig: InputData[] = [
@@ -34,7 +34,7 @@ export const getRegistrationPage = ({ element, changeTabHandler }: Props) => {
 
     const footer = entryFooter();
     customButton({ element: footer, label: 'Зарегистрироваться', classType: 'blue-white' });
-    customButton({ element: footer, label: 'Войти', classType: 'white-blue', onClick: () => changeTabHandler({ isRegistration: false }) });
+    customButton({ element: footer, label: 'Войти', classType: 'white-blue', onClick: () => changeTabHandler({ entryView: 'login' }) });
 
     wrapper.appendChild(header);
     wrapper.appendChild(form);

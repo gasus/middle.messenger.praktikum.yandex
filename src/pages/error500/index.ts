@@ -1,10 +1,9 @@
 import { errorInfo } from '../../components/errorInfo/index';
-import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
+import { app } from '../../main';
 
-const getError500 = (element: HTMLElement) => {
-    const error = errorInfo({ number: '500', description: 'Мы уже фиксим' });
+export const renderError500 = () => {
+    const error = errorInfo({ number: '500', description: 'Ошибка, всякое могло произойти' });
 
-    element.appendChild(error);
+    app.innerHTML = '';
+    app.appendChild(error);
 };
-
-getError500(document.querySelector<HTMLElement>('#app')!);
