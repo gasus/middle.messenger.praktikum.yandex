@@ -1,7 +1,6 @@
 import { chatListWrapper } from '../../components/chatListWrapper/index';
 import { chatMain } from '../../components/chatMain/index';
 import { app } from '../../main';
-import './style.less';
 
 export const renderChat = () => {
     const onChangeChat = ({ id }: { id?: string }) => {

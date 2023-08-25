@@ -3,7 +3,6 @@ import { profileInfo } from '../../../components/profileInfo/index';
 import { profileWrapper } from '../../../components/profileWrapper/index';
 import { ProfileViewProps } from '../../../types/ProfileViewProps';
 import { changeUrl } from '../../../utils/changeUrl/index';
-import './style.less';
 
 type Props = {
     element: HTMLElement;
