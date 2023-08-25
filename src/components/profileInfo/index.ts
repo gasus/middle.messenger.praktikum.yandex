@@ -1,12 +1,14 @@
 import { InputData } from '../../types/InputData';
+import { ProfileViewProps } from '../../types/ProfileViewProps';
 import { customButton } from '../customButton/index';
 import { profileAvatar } from '../profileAvatar/index';
 import { profileForm } from '../profileForm/index';
 import './style.less';
 
 type Props = {
-    isEdit?: boolean;
-    isEditPassword?: boolean;
+    isEdit: boolean;
+    isEditPassword: boolean;
+    changeTabHandler: (entryView: ProfileViewProps) => void;
 };
 
 const mockUserData: InputData[] = [
@@ -24,7 +26,7 @@ const mockPasswordData: InputData[] = [
     { label: 'Повторите новый пароль', name: 'password', type: 'password' },
 ];
 
-export const profileInfo = ({ isEdit, isEditPassword }: Props) => {
+export const profileInfo = ({ isEdit, isEditPassword, changeTabHandler }: Props) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'profile-info-wrapper';
 
@@ -47,13 +49,13 @@ export const profileInfo = ({ isEdit, isEditPassword }: Props) => {
         const footerSeparatorTwo = document.createElement('div');
         footerSeparatorTwo.className = 'profile-info-footer-separator';
 
-        customButton({ element: footer, label: 'Изменить данные', classType: 'white-blue', withoutMargin: true });
+        customButton({ element: footer, label: 'Изменить данные', classType: 'white-blue', withoutMargin: true, onClick: () => changeTabHandler({ profileView: 'editUser' }) });
         footer.appendChild(footerSeparatorOne);
-        customButton({ element: footer, label: 'Изменить пароль', classType: 'white-blue', withoutMargin: true });
+        customButton({ element: footer, label: 'Изменить пароль', classType: 'white-blue', withoutMargin: true, onClick: () => changeTabHandler({ profileView: 'editPassword' }) });
         footer.appendChild(footerSeparatorTwo);
-        customButton({ element: footer, label: 'Выйти', classType: 'white-red', withoutMargin: true, link: '/' });
+        customButton({ element: footer, label: 'Выйти', classType: 'white-red', withoutMargin: true });
     } else {
-        customButton({ element: footer, label: 'Сохранить', classType: 'blue-white' });
+        customButton({ element: footer, label: 'Сохранить', classType: 'blue-white', onClick: () => changeTabHandler({ profileView: 'main' }) });
     }
 
     content.appendChild(footer);

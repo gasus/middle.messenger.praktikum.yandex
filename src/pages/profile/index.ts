@@ -1,14 +1,19 @@
-import { goBackBlock } from '../../components/goBackBlock/index';
-import { profileInfo } from '../../components/profileInfo/index';
-import './style.less';
-import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
+import { app } from '../../main';
+import { ProfileViewProps } from '../../types/ProfileViewProps';
+import { getProfileEditPassword } from './profileEditPassword/index';
+import { getProfileEditUser } from './profileEditUser/index';
+import { getProfileMain } from './profileMain/index';
 
-const getProfile = (element: HTMLElement) => {
-    const leftBlock = goBackBlock({});
-    const rightBlock = profileInfo({});
+export const renderProfile = ({ profileView }: ProfileViewProps) => {
+    app.innerHTML = '';
 
-    element.appendChild(leftBlock);
-    element.appendChild(rightBlock);
+    console.log(profileView);
+
+    if (profileView === 'main') {
+        getProfileMain({ element: app, changeTabHandler: renderProfile });
+    } else if (profileView === 'editUser') {
+        getProfileEditUser({ element: app, changeTabHandler: renderProfile });
+    } else if (profileView === 'editPassword') {
+        getProfileEditPassword({ element: app, changeTabHandler: renderProfile });
+    }
 };
-
-getProfile(document.querySelector<HTMLElement>('#profile')!);

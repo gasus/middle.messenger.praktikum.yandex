@@ -1,20 +1,32 @@
 import './style.less';
-import { getLoginPage } from './pages/login/index';
-import { getRegistrationPage } from './pages/registration/index';
+import { renderEntry } from './pages/entry/index';
+import { renderProfile } from './pages/profile/index';
+import { renderError404 } from './pages/error404/index';
+import { renderError500 } from './pages/error500/index';
+import { renderChat } from './pages/chat/index';
 
-type Props = {
-    isRegistration?: boolean;
+export const app = document.querySelector<HTMLElement>('#app')!;
+
+const renderPage = () => {
+    const path = window.location.pathname;
+
+    switch (path) {
+        case '/':
+            renderEntry({ entryView: 'login' });
+            break;
+        case '/chat':
+            renderChat();
+            break;
+        case '/profile':
+            renderProfile({ profileView: 'main' });
+            break;
+        case '/500':
+            renderError500();
+            break;
+        default:
+            renderError404();
+            break;
+    };
 };
 
-const renderPage = ({ isRegistration }: Props) => {
-    const app = document.querySelector<HTMLElement>('#app')!;
-    app.innerHTML = '';
-
-    if (isRegistration) {
-        getRegistrationPage({ element: app, changeTabHandler: renderPage });
-    } else {
-        getLoginPage({ element: app, changeTabHandler: renderPage });
-    }
-}
-
-renderPage({}); 
+renderPage();

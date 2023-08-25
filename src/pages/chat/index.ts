@@ -1,11 +1,9 @@
 import { chatListWrapper } from '../../components/chatListWrapper/index';
+import { app } from '../../main';
 import './style.less';
-import '../../style.less'; // TODO: Стили из корня, вероятно не совсем верно
 
-const getChat = (element: HTMLElement) => {
+export const renderChat = () => {
     const leftBlock = chatListWrapper();
 
-    element.appendChild(leftBlock);
+    app.appendChild(leftBlock);
 };
-
-getChat(document.querySelector<HTMLElement>('#chat')!);

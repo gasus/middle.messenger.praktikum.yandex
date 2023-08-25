@@ -1,3 +1,4 @@
+import { changeUrl } from '../../utils/changeUrl/index';
 import { customButton } from '../customButton/index';
 import './style.less';
 
@@ -21,7 +22,7 @@ export const errorInfo = ({ number, description }: Props) => {
 
     wrapper.appendChild(errorNum);
     wrapper.appendChild(errorDescription);
-    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', link: '/' });
+    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', onClick: () => changeUrl('/') });
 
     return wrapper;
 };
