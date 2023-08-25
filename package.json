@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite",
+    "start": "tsc && vite build && node ./server.cjs",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "express": "^4.18.2",
     "less": "^4.2.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
