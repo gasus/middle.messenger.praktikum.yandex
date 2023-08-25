@@ -54,7 +54,7 @@ export const profileInfo = ({ isEdit, isEditPassword, changeTabHandler }: Props)
         footer.appendChild(footerSeparatorOne);
         customButton({ element: footer, label: 'Изменить пароль', classType: 'white-blue', withoutMargin: true, onClick: () => changeTabHandler({ profileView: 'editPassword' }) });
         footer.appendChild(footerSeparatorTwo);
-        customButton({ element: footer, label: 'Выйти', classType: 'white-red', withoutMargin: true, onClick: () => changeUrl('/') });
+        customButton({ element: footer, label: 'Выйти', classType: 'white-red', withoutMargin: true, onClick: () => changeUrl('?page=login') });
     } else {
         customButton({ element: footer, label: 'Сохранить', classType: 'blue-white', onClick: () => changeTabHandler({ profileView: 'main' }) });
     }

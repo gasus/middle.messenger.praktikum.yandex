@@ -12,7 +12,7 @@ type Props = {
 export const getProfileMain = ({ element, changeTabHandler }: Props) => {
     const wrapper = profileWrapper();
 
-    const leftBlock = goBackBlock({ onClick: () => changeUrl('chat') });
+    const leftBlock = goBackBlock({ onClick: () => changeUrl('?page=chat') });
     const rightBlock = profileInfo({ isEdit: false, isEditPassword: false, changeTabHandler });
 
     wrapper.appendChild(leftBlock);

@@ -6,7 +6,7 @@ export const chatToProfileButton = () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'chat-to-profile-button-wrapper';
 
-    customButton({ element: wrapper, label: 'Профиль >', classType: 'white-gray', onClick: () => changeUrl('profile') });
+    customButton({ element: wrapper, label: 'Профиль >', classType: 'white-gray', onClick: () => changeUrl('?page=profile') });
 
     return wrapper;
 };
