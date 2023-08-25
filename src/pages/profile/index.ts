@@ -7,8 +7,6 @@ import { getProfileMain } from './profileMain/index';
 export const renderProfile = ({ profileView }: ProfileViewProps) => {
     app.innerHTML = '';
 
-    console.log(profileView);
-
     if (profileView === 'main') {
         getProfileMain({ element: app, changeTabHandler: renderProfile });
     } else if (profileView === 'editUser') {
