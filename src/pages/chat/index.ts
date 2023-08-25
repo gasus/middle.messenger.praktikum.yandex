@@ -1,9 +1,18 @@
 import { chatListWrapper } from '../../components/chatListWrapper/index';
+import { chatMain } from '../../components/chatMain/index';
 import { app } from '../../main';
 import './style.less';
 
 export const renderChat = () => {
-    const leftBlock = chatListWrapper();
+    const onChangeChat = ({ id }: { id?: string }) => {
+        app.innerHTML = '';
 
-    app.appendChild(leftBlock);
+        const leftBlock = chatListWrapper({ onChangeChat, id });
+        const rightBlock = chatMain({ chatId: id });
+
+        app.appendChild(leftBlock);
+        app.appendChild(rightBlock);
+    };
+
+    onChangeChat({});
 };

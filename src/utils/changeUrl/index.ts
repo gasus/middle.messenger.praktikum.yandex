@@ -1,3 +1,5 @@
-export const changeUrl = (path: string) => {
+type Path = '/' | 'profile' | 'chat';
+
+export const changeUrl = (path: Path) => {
     window.location.href = path;
 };

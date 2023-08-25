@@ -3,15 +3,16 @@ import './style.less';
 
 type Props = ChanelPreview & {
     element: HTMLElement;
-    onClick?: () => void;
+    isSelected: boolean;
+    onChangeChat: ({ id }: { id?: string }) => void;
 };
 
-export const chatChanelPreview = ({ element, chanelName, lastMessage, date, unreadCount, onClick }: Props) => {
+export const chatChanelPreview = ({ id, isSelected, element, chanelName, lastMessage, date, unreadCount, onChangeChat }: Props) => {
     const wrapper = document.createElement('div');
-    wrapper.className = 'chanel-preview-wrapper';
+    wrapper.className = isSelected ? 'chanel-preview-wrapper chanel-preview-wrapper-selected' : 'chanel-preview-wrapper'; // TODO: Выбранный чат выделяется криво, надо доделать
 
     wrapper.addEventListener("click", () => {
-        onClick?.();
+        onChangeChat({ id });
     });
 
     const chanelImg = document.createElement('div');
