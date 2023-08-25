@@ -1,5 +1,5 @@
-type Path = '/' | 'profile' | 'chat';
+type Path = '?page=login' | '?page=chat' | '?page=profile';
 
 export const changeUrl = (path: Path) => {
-    window.location.href = path;
+    window.location.search = path;
 };

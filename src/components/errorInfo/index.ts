@@ -22,7 +22,7 @@ export const errorInfo = ({ number, description }: Props) => {
 
     wrapper.appendChild(errorNum);
     wrapper.appendChild(errorDescription);
-    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', onClick: () => changeUrl('/') });
+    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', onClick: () => changeUrl('?page=login') });
 
     return wrapper;
 };

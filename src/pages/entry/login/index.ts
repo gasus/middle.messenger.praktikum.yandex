@@ -29,7 +29,7 @@ export const getLoginPage = ({ element, changeTabHandler }: Props) => {
     });
 
     const footer = entryFooter();
-    customButton({ element: footer, label: 'Авторизоваться* (без логина и пароля)', classType: 'blue-white', onClick: () => changeUrl('chat') });
+    customButton({ element: footer, label: 'Авторизоваться* (без логина и пароля)', classType: 'blue-white', onClick: () => changeUrl('?page=chat') });
     customButton({ element: footer, label: 'Нет аккаунта?', classType: 'white-blue', onClick: () => changeTabHandler({ entryView: 'registration' }) });
 
     wrapper.appendChild(header);

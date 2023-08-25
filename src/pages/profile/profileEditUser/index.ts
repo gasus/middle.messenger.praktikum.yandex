@@ -12,7 +12,7 @@ type Props = {
 export const getProfileEditUser = ({ element, changeTabHandler }: Props) => {
     const wrapper = profileWrapper();
 
-    const leftBlock = goBackBlock({ onClick: () => changeUrl('profile') });
+    const leftBlock = goBackBlock({ onClick: () => changeUrl('?page=profile') });
     const rightBlock = profileInfo({ isEdit: true, isEditPassword: false, changeTabHandler });
 
     wrapper.appendChild(leftBlock);
