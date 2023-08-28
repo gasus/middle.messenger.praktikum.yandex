@@ -1,8 +1,5 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
-export const profileWrapper = () => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'profile-wrapper';
-
-    return wrapper;
-};
+export const profileWrapper = () =>
+  crtElement({ tag: "div", cls: "profile-wrapper" });

@@ -1,12 +1,13 @@
-import { ChanelPreview } from '../../types/ChanelPreview';
-import './style.less';
+import { ChanelPreview } from "types/ChanelPreview";
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
-type Props = Pick<ChanelPreview, 'chanelName'>;
+type Props = Pick<ChanelPreview, "chanelName">;
 
 export const chatChanelName = ({ chanelName }: Props) => {
-    const chanelPreviewName = document.createElement('div');
-    chanelPreviewName.className = 'chanel-name';
-    chanelPreviewName.textContent = chanelName;
-
-    return chanelPreviewName;
+  return crtElement({
+    tag: "div",
+    cls: "chanel-name",
+    text: chanelName,
+  });
 };

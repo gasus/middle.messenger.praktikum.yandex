@@ -1,14 +1,14 @@
-import { app } from '../../main';
-import { EntryPageProps } from '../../types/EntryPageProps';
-import { getLoginPage } from './login/index';
-import { getRegistrationPage } from './registration/index';
+import { app } from "../../main";
+import { EntryPageProps } from "types/EntryPageProps";
+import { getLoginPage } from "./login";
+import { getRegistrationPage } from "./registration";
 
 export const renderEntry = ({ entryView }: EntryPageProps) => {
-    app.innerHTML = '';
+  app.innerHTML = "";
 
-    if (entryView === 'registration') {
-        getRegistrationPage({ element: app, changeTabHandler: renderEntry });
-    } else if (entryView === 'login') {
-        getLoginPage({ element: app, changeTabHandler: renderEntry });
-    }
+  if (entryView === "registration") {
+    getRegistrationPage({ element: app, changeTabHandler: renderEntry });
+  } else if (entryView === "login") {
+    getLoginPage({ element: app, changeTabHandler: renderEntry });
+  }
 };

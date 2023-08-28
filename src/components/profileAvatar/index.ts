@@ -1,24 +1,25 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
 type Props = {
-    img?: string;
-    userName: string;
+  img?: string;
+  userName: string;
 };
 
 export const profileAvatar = ({ img, userName }: Props) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'profile-avatar-wrapper';
+  const wrapper = crtElement({ tag: "div", cls: "profile-avatar-wrapper" });
 
-    const avatar = document.createElement('div');
-    avatar.className = 'profile-avatar-img';
-    if (img) avatar.nodeValue = img; // TODO: Временная заглушка
+  const avatar = crtElement({ tag: "div", cls: "profile-avatar-img" });
+  if (img) avatar.nodeValue = img; // TODO: Временная заглушка
 
-    const name = document.createElement('div');
-    name.className = 'profile-avatar-name';
-    name.textContent = userName;
+  const name = crtElement({
+    tag: "div",
+    cls: "profile-avatar-name",
+    text: userName,
+  });
 
-    wrapper.appendChild(avatar);
-    wrapper.appendChild(name);
+  wrapper.appendChild(avatar);
+  wrapper.appendChild(name);
 
-    return wrapper;
+  return wrapper;
 };

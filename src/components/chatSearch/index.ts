@@ -1,22 +1,21 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
 type Props = {
-    searchChats: (value?: string) => void;
+  searchChats: (value?: string) => void;
 };
 
 export const chatSearch = ({ searchChats }: Props) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'chat-search-wrapper';
+  const wrapper = crtElement({ tag: "div", cls: "chat-search-wrapper" });
 
-    const search = document.createElement('input');
-    search.className = 'chat-search';
-    search.placeholder = 'Поиск';
+  const search = crtElement({ tag: "input", cls: "chat-search" });
+  search.placeholder = "Поиск";
 
-    search.addEventListener('input', () => {
-        searchChats(search.value);
-    });
+  search.addEventListener("input", () => {
+    searchChats(search.value);
+  });
 
-    wrapper.appendChild(search);
+  wrapper.appendChild(search);
 
-    return wrapper;
+  return wrapper;
 };

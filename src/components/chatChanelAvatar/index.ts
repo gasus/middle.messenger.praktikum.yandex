@@ -1,12 +1,12 @@
-import { ChanelPreview } from '../../types/ChanelPreview';
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import { ChanelPreview } from "types/ChanelPreview";
+import "./style.less";
 
-type Props = Pick<ChanelPreview, 'img'>;
+type Props = Pick<ChanelPreview, "img">;
 
 export const chatChanelAvatar = ({ img }: Props) => {
-    const avatar = document.createElement('div');
-    avatar.className = 'chat-chanel-avatar';
-    avatar.style.backgroundColor = img;
+  const avatar = crtElement({ tag: "div", cls: "chat-chanel-avatar" });
+  avatar.style.backgroundColor = img;
 
-    return avatar;
+  return avatar;
 };

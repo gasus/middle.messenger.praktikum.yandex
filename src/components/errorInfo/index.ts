@@ -1,28 +1,36 @@
-import { changeUrl } from '../../utils/changeUrl/index';
-import { customButton } from '../customButton/index';
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import { changeUrl } from "utils/changeUrl";
+import { customButton } from "components/customButton";
+import "./style.less";
 
 type Props = {
-    number: string;
-    description: string;
+  number: string;
+  description: string;
 };
 
 export const errorInfo = ({ number, description }: Props) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'error-info-wrapper';
+  const wrapper = crtElement({ tag: "div", cls: "error-info-wrapper" });
 
-    const errorNum = document.createElement('div');
-    errorNum.className = 'error-info-number';
-    errorNum.textContent = number;
+  const errorNum = crtElement({
+    tag: "div",
+    cls: "error-info-number",
+    text: number,
+  });
 
-    const errorDescription = document.createElement('div');
-    errorDescription.className = 'error-info-description';
-    errorDescription.textContent = description;
+  const errorDescription = crtElement({
+    tag: "div",
+    cls: "error-info-description",
+    text: description,
+  });
 
+  wrapper.appendChild(errorNum);
+  wrapper.appendChild(errorDescription);
+  customButton({
+    element: wrapper,
+    label: "Назад к чатам",
+    classType: "white-blue",
+    onClick: () => changeUrl("?page=login"),
+  });
 
-    wrapper.appendChild(errorNum);
-    wrapper.appendChild(errorDescription);
-    customButton({ element: wrapper, label: 'Назад к чатам', classType: 'white-blue', onClick: () => changeUrl('?page=login') });
-
-    return wrapper;
+  return wrapper;
 };

@@ -1,13 +1,9 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
 type Props = {
-    label: string;
+  label: string;
 };
 
-export const entryHeader = ({ label }: Props) => {
-    const entryHeader = document.createElement('div');
-    entryHeader.className = 'entry-header';
-    entryHeader.textContent = label;
-
-    return entryHeader;
-};
+export const entryHeader = ({ label }: Props) =>
+  crtElement({ tag: "div", cls: "entry-header", text: label });

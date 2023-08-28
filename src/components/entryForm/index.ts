@@ -1,8 +1,4 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
-export const entryForm = () => {
-    const entryForm = document.createElement('form');
-    entryForm.className = 'entry-form';
-
-    return entryForm;
-};
+export const entryForm = () => crtElement({ tag: "form", cls: "entry-form" });

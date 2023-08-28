@@ -1,8 +1,5 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
-export const entryWrapper = () => {
-    const entryWrapper = document.createElement('div');
-    entryWrapper.className = 'entry-wrapper';
-
-    return entryWrapper;
-};
+export const entryWrapper = () =>
+  crtElement({ tag: "div", cls: "entry-wrapper" });

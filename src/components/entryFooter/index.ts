@@ -1,8 +1,5 @@
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
-export const entryFooter = () => {
-    const entryFooter = document.createElement('div');
-    entryFooter.className = 'entry-footer';
-
-    return entryFooter;
-};
+export const entryFooter = () =>
+  crtElement({ tag: "div", cls: "entry-footer" });

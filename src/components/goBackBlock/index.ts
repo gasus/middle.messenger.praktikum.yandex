@@ -1,15 +1,19 @@
-import addButtonCircleArrow from '../buttonCircleArrow/index';
-import './style.less';
+import { crtElement } from "utils/crtElement";
+import addButtonCircleArrow from "components/buttonCircleArrow";
+import "./style.less";
 
 type Props = {
-    onClick: () => void;
+  onClick: () => void;
 };
 
 export const goBackBlock = ({ onClick }: Props) => {
-    const block = document.createElement('div');
-    block.className = 'go-back-block';
+  const block = crtElement({ tag: "div", cls: "go-back-block" });
 
-    addButtonCircleArrow({ element: block, destination: 'left', onClick: onClick });
+  addButtonCircleArrow({
+    element: block,
+    destination: "left",
+    onClick: onClick,
+  });
 
-    return block;
+  return block;
 };

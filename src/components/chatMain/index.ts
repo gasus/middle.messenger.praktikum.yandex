@@ -1,15 +1,15 @@
-import { chatMainHeader } from '../chatMainHeader/index';
-import { empty } from '../empty/index';
-import './style.less';
+import { chatMainHeader } from "components/chatMainHeader";
+import { empty } from "components/empty";
+import { crtElement } from "utils/crtElement";
+import "./style.less";
 
 export const chatMain = ({ chatId }: { chatId?: string }) => {
-    if (chatId) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'chat-main';
-        wrapper.appendChild(chatMainHeader({ id: chatId }));
+  if (chatId) {
+    const wrapper = crtElement({ tag: "div", cls: "chat-main" });
+    wrapper.appendChild(chatMainHeader({ id: chatId }));
 
-        return wrapper;
-    } else {
-        return empty('Выберите чат чтобы отправить сообщение');
-    };
+    return wrapper;
+  } else {
+    return empty("Выберите чат чтобы отправить сообщение");
+  }
 };
