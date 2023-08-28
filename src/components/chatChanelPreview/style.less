@@ -1,14 +1,16 @@
+@import "@style-variables";
+
 .chanel-preview-wrapper {
   display: flex;
   height: 80px;
   margin: 0 0 0 10px;
   box-sizing: border-box;
-  border-top: 1px solid #c4c4c4;
+  border-top: 1px solid @mediumGray-color;
   cursor: pointer;
 }
 
 .chanel-preview-wrapper-selected {
-  background-color: #ffbb5c2e;
+  background-color: @orange-opacity-color;
 }
 
 .chanel-preview-wrapper:first-of-type {
@@ -23,7 +25,7 @@
 .chanel-preview-message {
   font-size: 14px;
   font-weight: 500;
-  color: #9b9b9b;
+  color: @darkGray-color;
   height: 40px;
   line-height: 18px;
   overflow: hidden;
@@ -42,14 +44,14 @@
 .chanel-preview-message-date {
   font-size: 12px;
   font-weight: 500;
-  color: #9b9b9b;
+  color: @darkGray-color;
 }
 
 .chanel-preview-unread-count {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3369F3;
+  background-color: @blue-color;
   font-size: 10px;
   font-weight: 500;
   color: white;

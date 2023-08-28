@@ -1,3 +1,5 @@
+@import "@style-variables";
+
 .profile-input-wrapper {
   display: flex;
   margin: 10px 0;
@@ -7,18 +9,18 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 2em;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid @lightGray-color;
 }
 
 .profile-input {
   border: 1px solid transparent;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid @lightGray-color;
   padding: 0.2em 0;
   font-size: 1em;
   font-family: inherit;
   flex: 1;
   text-align: right;
-  color: #a7a7a7;
+  color: @darkGray-color;
 }
 
 .profile-input:disabled {

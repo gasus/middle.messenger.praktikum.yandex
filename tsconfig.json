@@ -15,6 +15,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": { // TODO: Перевести приложение полностью на aliases
+      "@style-variables": [
+        "src/style-variables.less"
+      ]
+    },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

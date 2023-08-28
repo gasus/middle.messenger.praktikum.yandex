@@ -1,3 +1,5 @@
+@import "@style-variables";
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .input-label {
-  color: #a7a5a5;
+  color: @darkGray-color;
   font-size: 0.7em;
   margin: 0 auto 0 0;
   transition: visibility 0.2s linear, opacity 0.2s linear;
@@ -13,7 +15,7 @@
 
 .input {
   border: 1px solid transparent;
-  border-bottom: 1px solid #3369F3;
+  border-bottom: 1px solid @blue-color;
   padding: 0.2em 0;
   font-size: 1em;
   font-family: inherit;

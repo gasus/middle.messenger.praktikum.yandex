@@ -1,3 +1,5 @@
+@import "@style-variables";
+
 .button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -10,29 +12,30 @@
 }
 
 .button-blue-white {
-  background-color: #3369F3;
-  color: #ffffff;
+  background-color: @blue-color;
+  color: @white-color;
 }
 
 .button-white-blue {
-  background-color: #ffffff;
-  color: #3369F3;
+  background-color: @white-color;
+  color: @blue-color;
   border: none;
   padding: 0;
   margin: 10px auto;
 }
 
 .button-white-red {
-  background-color: #ffffff;
-  color: #e32f2f;
+  background-color: @white-color;
+  color: @red-color;
   border: none;
   padding: 0;
   margin: 10px auto;
 }
 
 .button-white-gray {
-  background-color: #ffffff00;
-  color: #9b9b9b;
+  background-color: inherit;
+  opacity: 1;
+  color: @darkGray-color;
   border: none;
   padding: 0;
   margin: 10px auto;
