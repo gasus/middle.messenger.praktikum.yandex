@@ -17,14 +17,14 @@ const configUserData: InputData[] = [
     { label: 'Логин', name: 'login', type: 'text', value: '' },
     { label: 'Имя', name: 'first_name', type: 'text', value: '' },
     { label: 'Фамилия', name: 'second_name', type: 'text', value: '' },
-    { label: 'Имя в чате', name: 'chat_name', type: 'text', value: '' },
+    { label: 'Имя в чате', name: 'display_name', type: 'text', value: '' },
     { label: 'Телефон', name: 'phone', type: 'text', value: '' },
 ];
 
 const configPasswordData: InputData[] = [
-    { label: 'Старый пароль', name: 'password', type: 'password' },
-    { label: 'Новый пароль', name: 'password', type: 'password' },
-    { label: 'Повторите новый пароль', name: 'password', type: 'password' },
+    { label: 'Старый пароль', name: 'oldPassword', type: 'password' },
+    { label: 'Новый пароль', name: 'newPassword', type: 'password' },
+    { label: 'Повторите новый пароль', name: 'newPassword', type: 'password' },
 ];
 
 export const profileInfo = ({ isEdit, isEditPassword, changeTabHandler }: Props) => {

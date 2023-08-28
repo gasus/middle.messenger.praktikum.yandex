@@ -1,3 +1,14 @@
+## Описание
+
+Проект чата для 1го модуля курса
+
+## Технологии
+
+- Vite
+- TypeScript
+- Express
+- LESS
+
 ## Установка
 
 - `npm i` — установка
@@ -5,7 +16,7 @@
 - `npm run start` — запуск версии для разработчика со сборкой
 - `npm run build` — сборка бандла
 
-## **Стенд**
+## Стенд
 
 - Логин - https://stunning-queijadas-f73787.netlify.app
 - Чат - https://stunning-queijadas-f73787.netlify.app/?page=chat
