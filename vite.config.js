@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import path from "path";
-import handlebars from "vite-plugin-handlebars";
 
 export default defineConfig({
   resolve: {
@@ -9,8 +8,9 @@ export default defineConfig({
       utils: path.resolve(__dirname, "src/utils"),
       pages: path.resolve(__dirname, "src/pages"),
       components: path.resolve(__dirname, "src/components"),
+      oldPages: path.resolve(__dirname, "src/oldPages"),
+      oldComponents: path.resolve(__dirname, "src/oldComponents"),
       types: path.resolve(__dirname, "src/types"),
     },
   },
-  plugins: [handlebars()],
 });
