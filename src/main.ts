@@ -1,33 +1,27 @@
-import { renderEntry } from "./pages/entry";
-import { renderProfile } from "./pages/profile";
-import { renderError404 } from "./pages/error404";
-import { renderError500 } from "./pages/error500";
-import { renderChat } from "./pages/chat";
+import Handlebars from "handlebars";
+import * as Components from "components/index";
+import * as Pages from "pages/index";
+import { PageTypes } from "types/PageTypes";
 import "./style.less";
 
-export const app = document.querySelector<HTMLElement>("#app")!;
+Object.entries(Components).forEach(([name, component]) => {
+  Handlebars.registerPartial(name, component);
+});
 
-const renderPage = () => {
-  const path = window.location.search;
-
-  switch (path) {
-    case "":
-    case "?page=login":
-      renderEntry({ entryView: "login" });
-      break;
-    case "?page=chat":
-      renderChat();
-      break;
-    case "?page=profile":
-      renderProfile({ profileView: "main" });
-      break;
-    case "?page=500":
-      renderError500();
-      break;
-    default:
-      renderError404();
-      break;
-  }
+const pages: { [key in PageTypes]: any } = {
+  login: [Pages.LoginPage],
+  registration: [Pages.RegistrationPage],
+  error404: [Pages.Error404Page],
+  error500: [Pages.Error500Page],
+  chat: [],
+  profile: [],
+  profileInfoEdit: [],
+  profilePasswordEdit: [],
 };
 
-renderPage();
+const navigate = (page: PageTypes) => {
+  const [source, args] = pages[page];
+  document.body.innerHTML = Handlebars.compile(source)(args);
+};
+
+document.addEventListener("DOMContentLoaded", () => navigate("registration"));
