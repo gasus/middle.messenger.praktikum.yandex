@@ -1,11 +1,12 @@
-import { app } from "../../main";
+// import { app } from "../../main";
 import { ProfileViewProps } from "types/ProfileViewProps";
 import { getProfileEditPassword } from "./profileEditPassword";
 import { getProfileEditUser } from "./profileEditUser";
 import { getProfileMain } from "./profileMain";
 
 export const renderProfile = ({ profileView }: ProfileViewProps) => {
-  app.innerHTML = "";
+  const app = document.createElement("div");
+  // app.innerHTML = "";
 
   if (profileView === "main") {
     getProfileMain({ element: app, changeTabHandler: renderProfile });
