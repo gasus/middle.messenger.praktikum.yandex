@@ -200,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => navigate("error404"));
 
 document.addEventListener("click", (e) => {
   const page = (e?.target as HTMLElement)?.getAttribute?.("page");
-  console.log(page);
   if (page) {
     navigate(page as PageTypes);
 
