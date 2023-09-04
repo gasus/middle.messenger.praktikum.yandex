@@ -60,9 +60,9 @@ const pages: { [key in PageTypes]: any } = {
   error404: [Pages.ErrorPage],
   error500: [Pages.ErrorPage],
   chat: [],
-  profile: [],
-  profileInfoEdit: [],
-  profilePasswordEdit: [],
+  profile: [Pages.ProfilePage],
+  profileInfoEdit: [Pages.ProfilePage],
+  profilePasswordEdit: [Pages.ProfilePage],
 };
 
 const navigate = (page: PageTypes) => {
@@ -71,4 +71,4 @@ const navigate = (page: PageTypes) => {
   document.body.innerHTML = Handlebars.compile(source)(args);
 };
 
-document.addEventListener("DOMContentLoaded", () => navigate("error500"));
+document.addEventListener("DOMContentLoaded", () => navigate("profile"));
