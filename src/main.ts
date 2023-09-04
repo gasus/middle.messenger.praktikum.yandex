@@ -16,8 +16,8 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Пароль", name: "password", type: "password" },
     ],
     buttons: [
-      { label: "Авторизоваться", className: "blue-white" },
-      { label: "Нет аккаунта?", className: "white-blue" },
+      { label: "Авторизоваться", className: "blue-white", page: "profile" },
+      { label: "Нет аккаунта?", className: "white-blue", page: "registration" },
     ],
   },
   registration: {
@@ -32,25 +32,28 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Пароль (еще раз)", name: "password", type: "password" },
     ],
     buttons: [
-      { label: "Зарегистрироваться", className: "blue-white" },
-      { label: "Войти", className: "white-blue" },
+      { label: "Зарегистрироваться", className: "blue-white", page: "login" },
+      { label: "Войти", className: "white-blue", page: "login" },
     ],
   },
   error404: {
     errorInfo: {
       errorNumber: "404",
       errorText: "Запрашиваемой страницы не существует, как и смысла в жизни",
+      returnPage: "login",
     },
   },
   error500: {
     errorInfo: {
       errorNumber: "500",
       errorText: "Ошибка, всякое могло произойти",
+      returnPage: "login",
     },
   },
   chat: {},
   profile: {
     userName: "Пользователь",
+    returnPage: "login",
     inputs: [
       {
         label: "Почта",
@@ -96,13 +99,22 @@ const pageArgs: { [key in PageTypes]: any } = {
       },
     ],
     buttons: [
-      { label: "Изменить данные", className: "white-blue" },
-      { label: "Изменить пароль", className: "white-blue" },
-      { label: "Выйти", className: "white-red" },
+      {
+        label: "Изменить данные",
+        className: "white-blue",
+        page: "profileInfoEdit",
+      },
+      {
+        label: "Изменить пароль",
+        className: "white-blue",
+        page: "profilePasswordEdit",
+      },
+      { label: "Выйти", className: "white-red", page: "login" },
     ],
   },
   profileInfoEdit: {
     userName: "Пользователь",
+    returnPage: "profile",
     inputs: [
       {
         label: "Почта",
@@ -141,10 +153,11 @@ const pageArgs: { [key in PageTypes]: any } = {
         value: "",
       },
     ],
-    buttons: [{ label: "Сохранить", className: "blue-white" }],
+    buttons: [{ label: "Сохранить", className: "blue-white", page: "profile" }],
   },
   profilePasswordEdit: {
     userName: "Пользователь",
+    returnPage: "profile",
     inputs: [
       {
         label: "Старый пароль",
@@ -162,7 +175,7 @@ const pageArgs: { [key in PageTypes]: any } = {
         type: "password",
       },
     ],
-    buttons: [{ label: "Сохранить", className: "blue-white" }],
+    buttons: [{ label: "Сохранить", className: "blue-white", page: "profile" }],
   },
 };
 
@@ -183,6 +196,15 @@ const navigate = (page: PageTypes) => {
   document.body.innerHTML = Handlebars.compile(source)(args);
 };
 
-document.addEventListener("DOMContentLoaded", () =>
-  navigate("profilePasswordEdit")
-);
+document.addEventListener("DOMContentLoaded", () => navigate("error404"));
+
+document.addEventListener("click", (e) => {
+  const page = (e?.target as HTMLElement)?.getAttribute?.("page");
+  console.log(page);
+  if (page) {
+    navigate(page as PageTypes);
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
+});

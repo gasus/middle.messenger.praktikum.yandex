@@ -3,5 +3,7 @@
   <div class="error-info-description">
     {{errorText}}
   </div>
-  {{> Button customClass="button-white-blue" label='Назад к чатам' }}
+  {{#with returnPage}}
+   {{> Button customClass="white-blue" label='Назад к чатам' page=this }}
+  {{/with}}
 </div>

@@ -1,5 +1,7 @@
 <div class="profile-wrapper">
-{{> GoBackBlock }}
+{{#with returnPage}}
+{{> GoBackBlock returnPage=this }}
+{{/with}}
 <div class="profile-info-wrapper">
   <div class="profile-info-content">
     {{#with userName}}
@@ -12,7 +14,7 @@
    </form>
    <div class="profile-info-footer">
     {{#each buttons}}
-     {{> Button label=this.label customClass=this.className }}
+     {{> Button label=this.label customClass=this.className page=this.page }}
     {{/each}}
    </div>
     </div>

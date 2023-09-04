@@ -1,3 +1,5 @@
 <div class="go-back-block">
- {{> ButtonCircleWithArrow destination="left" }}
+{{#with returnPage}}
+ {{> ButtonCircleWithArrow destination="left" page=this }}
+ {{/with}}
 </div>
