@@ -1,3 +1,20 @@
 <div class="profile-wrapper">
-  {{> GoBackBlock }}
+{{> GoBackBlock }}
+<div class="profile-info-wrapper">
+  <div class="profile-info-content">
+    {{#with userName}}
+     {{> Avatar userName=this }}
+    {{/with}}
+    <form class="profile-form">
+   {{#each inputs}}
+     {{> ProfileInput label=this.label name=this.name type=this.type disabled=this.disabled }}
+   {{/each}}
+   </form>
+   <div class="profile-info-footer">
+    {{#each buttons}}
+     {{> Button label=this.label customClass=this.className }}
+    {{/each}}
+   </div>
+    </div>
+   </div>
 </div>

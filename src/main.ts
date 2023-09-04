@@ -16,8 +16,8 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Пароль", name: "password", type: "password" },
     ],
     buttons: [
-      { label: "Авторизоваться", className: "button-blue-white" },
-      { label: "Нет аккаунта?", className: "button-white-blue" },
+      { label: "Авторизоваться", className: "blue-white" },
+      { label: "Нет аккаунта?", className: "white-blue" },
     ],
   },
   registration: {
@@ -32,8 +32,8 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Пароль (еще раз)", name: "password", type: "password" },
     ],
     buttons: [
-      { label: "Зарегистрироваться", className: "button-blue-white" },
-      { label: "Войти", className: "button-white-blue" },
+      { label: "Зарегистрироваться", className: "blue-white" },
+      { label: "Войти", className: "white-blue" },
     ],
   },
   error404: {
@@ -49,9 +49,121 @@ const pageArgs: { [key in PageTypes]: any } = {
     },
   },
   chat: {},
-  profile: {},
-  profileInfoEdit: {},
-  profilePasswordEdit: {},
+  profile: {
+    userName: "Пользователь",
+    inputs: [
+      {
+        label: "Почта",
+        name: "email",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+      {
+        label: "Логин",
+        name: "login",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+      {
+        label: "Имя",
+        name: "first_name",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+      {
+        label: "Фамилия",
+        name: "second_name",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+      {
+        label: "Имя в чате",
+        name: "display_name",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+      {
+        label: "Телефон",
+        name: "phone",
+        type: "text",
+        value: "",
+        disabled: true,
+      },
+    ],
+    buttons: [
+      { label: "Изменить данные", className: "white-blue" },
+      { label: "Изменить пароль", className: "white-blue" },
+      { label: "Выйти", className: "white-red" },
+    ],
+  },
+  profileInfoEdit: {
+    userName: "Пользователь",
+    inputs: [
+      {
+        label: "Почта",
+        name: "email",
+        type: "text",
+        value: "",
+      },
+      {
+        label: "Логин",
+        name: "login",
+        type: "text",
+        value: "",
+      },
+      {
+        label: "Имя",
+        name: "first_name",
+        type: "text",
+        value: "",
+      },
+      {
+        label: "Фамилия",
+        name: "second_name",
+        type: "text",
+        value: "",
+      },
+      {
+        label: "Имя в чате",
+        name: "display_name",
+        type: "text",
+        value: "",
+      },
+      {
+        label: "Телефон",
+        name: "phone",
+        type: "text",
+        value: "",
+      },
+    ],
+    buttons: [{ label: "Сохранить", className: "blue-white" }],
+  },
+  profilePasswordEdit: {
+    userName: "Пользователь",
+    inputs: [
+      {
+        label: "Старый пароль",
+        name: "oldPassword",
+        type: "password",
+      },
+      {
+        label: "Новый пароль",
+        name: "newPassword",
+        type: "password",
+      },
+      {
+        label: "Повторите новый пароль",
+        name: "newPassword",
+        type: "password",
+      },
+    ],
+    buttons: [{ label: "Сохранить", className: "blue-white" }],
+  },
 };
 
 const pages: { [key in PageTypes]: any } = {
@@ -71,4 +183,6 @@ const navigate = (page: PageTypes) => {
   document.body.innerHTML = Handlebars.compile(source)(args);
 };
 
-document.addEventListener("DOMContentLoaded", () => navigate("profile"));
+document.addEventListener("DOMContentLoaded", () =>
+  navigate("profilePasswordEdit")
+);

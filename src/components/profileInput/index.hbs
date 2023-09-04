@@ -1,10 +1,19 @@
-<div class="profile-input-label">
+<div class="profile-input-wrapper">
   <label for="{{name}}" class="profile-input-label">{{label}}</label>
-  <input
-    class="profile-input"
-    name="{{name}}"
-    type="{{type}}"
-    value="{{value}}"
-    disabled="{{disabled}}"
-  />
+  {{#if disabled}}
+    <input
+      class="profile-input"
+      name="{{name}}"
+      type="{{type}}"
+      value="{{value}}"
+      disabled="true"
+    />
+  {{else}}
+    <input
+      class="profile-input"
+      name="{{name}}"
+      type="{{type}}"
+      value="{{value}}"
+    />
+  {{/if}}
 </div>
