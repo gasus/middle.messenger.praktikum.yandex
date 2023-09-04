@@ -36,8 +36,18 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Войти", className: "button-white-blue" },
     ],
   },
-  error404: {},
-  error500: {},
+  error404: {
+    errorInfo: {
+      errorNumber: "404",
+      errorText: "Запрашиваемой страницы не существует, как и смысла в жизни",
+    },
+  },
+  error500: {
+    errorInfo: {
+      errorNumber: "500",
+      errorText: "Ошибка, всякое могло произойти",
+    },
+  },
   chat: {},
   profile: {},
   profileInfoEdit: {},
@@ -47,8 +57,8 @@ const pageArgs: { [key in PageTypes]: any } = {
 const pages: { [key in PageTypes]: any } = {
   login: [Pages.EntryPage],
   registration: [Pages.EntryPage],
-  error404: [Pages.Error404Page],
-  error500: [Pages.Error500Page],
+  error404: [Pages.ErrorPage],
+  error500: [Pages.ErrorPage],
   chat: [],
   profile: [],
   profileInfoEdit: [],
@@ -61,4 +71,4 @@ const navigate = (page: PageTypes) => {
   document.body.innerHTML = Handlebars.compile(source)(args);
 };
 
-document.addEventListener("DOMContentLoaded", () => navigate("registration"));
+document.addEventListener("DOMContentLoaded", () => navigate("error500"));
