@@ -1,0 +1,15 @@
+<form class="entry-wrapper">
+   {{#with title}}
+     {{> Header label=this }}
+   {{/with}}
+ <div>
+   {{#each inputs}}
+     {{> Input label=this.label name=this.name type=this.type }}
+   {{/each}}
+ </div>
+ <div class="entry-footer">
+   {{#each buttons}}
+     {{> Button label=this.label customClass=this.className page=this.page }}
+   {{/each}}
+ </div>
+</form>
