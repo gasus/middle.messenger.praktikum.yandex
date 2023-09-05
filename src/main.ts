@@ -211,7 +211,9 @@ const pages: { [key in PageTypes]: any } = {
 const navigate = (page: PageTypes) => {
   const [source, _] = pages[page];
   const args = pageArgs[page];
-  document.body.innerHTML = Handlebars.compile(source)(args);
+
+  const main = document.getElementById("app");
+  if (main) main.innerHTML = Handlebars.compile(source)(args);
 };
 
 document.addEventListener("DOMContentLoaded", () => navigate("login"));
