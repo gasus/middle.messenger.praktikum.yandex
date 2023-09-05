@@ -1,11 +1,13 @@
 <div class="profile-wrapper">
 {{#with returnPage}}
-{{> GoBackBlock returnPage=this }}
+  {{> GoBackBlock returnPage=this }}
 {{/with}}
 <div class="profile-info-wrapper">
   <div class="profile-info-content">
     {{#with userName}}
-     {{> Avatar userName=this }}
+     <div class="profile-avatar">
+      {{> Avatar userName=this }}
+     </div>
     {{/with}}
     <form class="profile-form">
    {{#each inputs}}

@@ -1,0 +1,26 @@
+<div class="chat-list-wrapper">
+  <div class="chat-to-profile-button-wrapper">
+    {{#each buttons}}
+      {{> Button label=this.label customClass=this.className page=this.page }}
+    {{/each}}
+  </div>
+  {{> Search }}
+  <div class="chat-chanels">
+    {{#if chanels}}
+      {{#each chanels}}
+        {{> ChanelPreview chanelName=this.chanelName lastMessage=this.lastMessage lastMessageDate=this.lastMessageDate unreadCount=this.unreadCount }}
+      {{/each}}
+    {{else}}
+      {{> Empty }}
+    {{/if}}
+  </div>
+</div>
+{{#if id}}
+  <div class="chat-main">
+    <div class="chat-main-header-wrapper">
+      {{> Avatar userName="Пользователь" }}
+    </div>
+  </div>
+{{else}}
+  {{> Empty text='Выберите чат чтобы отправить сообщение' }}
+{{/if}}

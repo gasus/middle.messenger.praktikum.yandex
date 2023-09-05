@@ -16,7 +16,7 @@ const pageArgs: { [key in PageTypes]: any } = {
       { label: "Пароль", name: "password", type: "password" },
     ],
     buttons: [
-      { label: "Авторизоваться", className: "blue-white", page: "profile" },
+      { label: "Авторизоваться", className: "blue-white", page: "chat" },
       { label: "Нет аккаунта?", className: "white-blue", page: "registration" },
     ],
   },
@@ -50,10 +50,28 @@ const pageArgs: { [key in PageTypes]: any } = {
       returnPage: "login",
     },
   },
-  chat: {},
+  chat: {
+    buttons: [{ label: "Профиль >", className: "white-gray", page: "profile" }],
+    chanels: [
+      {
+        id: "1",
+        chanelName: "Иван Иванов",
+        lastMessageDate: "22.08.2023",
+        lastMessage: "Больше мне не пиши",
+        unreadCount: 1,
+      },
+      {
+        id: "2",
+        chanelName: "Генадий Генадьев",
+        lastMessageDate: "24.08.2023",
+        lastMessage: "Привет",
+        unreadCount: 999,
+      },
+    ],
+  },
   profile: {
     userName: "Пользователь",
-    returnPage: "login",
+    returnPage: "chat",
     inputs: [
       {
         label: "Почта",
@@ -184,7 +202,7 @@ const pages: { [key in PageTypes]: any } = {
   registration: [Pages.EntryPage],
   error404: [Pages.ErrorPage],
   error500: [Pages.ErrorPage],
-  chat: [],
+  chat: [Pages.ChatPage],
   profile: [Pages.ProfilePage],
   profileInfoEdit: [Pages.ProfilePage],
   profilePasswordEdit: [Pages.ProfilePage],
@@ -196,7 +214,7 @@ const navigate = (page: PageTypes) => {
   document.body.innerHTML = Handlebars.compile(source)(args);
 };
 
-document.addEventListener("DOMContentLoaded", () => navigate("error404"));
+document.addEventListener("DOMContentLoaded", () => navigate("login"));
 
 document.addEventListener("click", (e) => {
   const page = (e?.target as HTMLElement)?.getAttribute?.("page");
