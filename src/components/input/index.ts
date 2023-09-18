@@ -1,2 +1,2 @@
 import './style.less'
-export { default as Input } from './index.hbs?raw'
+export { Input } from './input'

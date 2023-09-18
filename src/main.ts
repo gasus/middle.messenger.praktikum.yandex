@@ -3,237 +3,192 @@ import * as Components from 'components/index'
 import * as Pages from 'pages/index'
 import { type PageTypes } from 'types/PageTypes'
 import './style.less'
+import { registerComponent } from 'utils/registerComponent'
 
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component)
-})
+Handlebars.registerPartial('EntryForm', Components.EntryForm)
 
-const pageArgs: { [key in PageTypes]: any } = {
-  login: {
-    title: 'Вход',
-    inputs: [
-      { label: 'Логин', name: 'login', type: 'text' },
-      { label: 'Пароль', name: 'password', type: 'password' }
-    ],
-    buttons: [
-      { label: 'Авторизоваться', className: 'blue-white', page: 'chat' },
-      {
-        label: 'Нет аккаунта?',
-        className: 'white-blue',
-        page: 'registration'
-      }
-    ]
-  },
-  registration: {
-    title: 'Регистрация',
-    inputs: [
-      { label: 'Почта', name: 'email', type: 'text' },
-      { label: 'Логин', name: 'login', type: 'text' },
-      { label: 'Имя', name: 'first_name', type: 'text' },
-      { label: 'Фамилия', name: 'second_name', type: 'text' },
-      { label: 'Телефон', name: 'phone', type: 'text' },
-      { label: 'Пароль', name: 'password', type: 'password' },
-      { label: 'Пароль (еще раз)', name: 'password', type: 'password' }
-    ],
-    buttons: [
-      {
-        label: 'Зарегистрироваться',
-        className: 'blue-white',
-        page: 'login'
-      },
-      { label: 'Войти', className: 'white-blue', page: 'login' }
-    ]
-  },
-  error404: {
-    errorInfo: {
-      errorNumber: '404',
-      errorText: 'Запрашиваемой страницы не существует, как и смысла в жизни',
-      returnPage: 'login'
-    }
-  },
-  error500: {
-    errorInfo: {
-      errorNumber: '500',
-      errorText: 'Ошибка, всякое могло произойти',
-      returnPage: 'login'
-    }
-  },
-  chat: {
-    buttons: [{ label: 'Профиль >', className: 'white-gray', page: 'profile' }],
-    chanels: [
-      {
-        id: '1',
-        chanelName: 'Иван Иванов',
-        lastMessageDate: '22.08.2023',
-        lastMessage: 'Больше мне не пиши',
-        unreadCount: 1
-      },
-      {
-        id: '2',
-        chanelName: 'Генадий Генадьев',
-        lastMessageDate: '24.08.2023',
-        lastMessage: 'Привет',
-        unreadCount: 999
-      }
-    ]
-  },
-  profile: {
-    userName: 'Пользователь',
-    returnPage: 'chat',
-    inputs: [
-      {
-        label: 'Почта',
-        name: 'email',
-        type: 'text',
-        value: '',
-        disabled: true
-      },
-      {
-        label: 'Логин',
-        name: 'login',
-        type: 'text',
-        value: '',
-        disabled: true
-      },
-      {
-        label: 'Имя',
-        name: 'first_name',
-        type: 'text',
-        value: '',
-        disabled: true
-      },
-      {
-        label: 'Фамилия',
-        name: 'second_name',
-        type: 'text',
-        value: '',
-        disabled: true
-      },
-      {
-        label: 'Имя в чате',
-        name: 'display_name',
-        type: 'text',
-        value: '',
-        disabled: true
-      },
-      {
-        label: 'Телефон',
-        name: 'phone',
-        type: 'text',
-        value: '',
-        disabled: true
-      }
-    ],
-    buttons: [
-      {
-        label: 'Изменить данные',
-        className: 'white-blue',
-        page: 'profileInfoEdit'
-      },
-      {
-        label: 'Изменить пароль',
-        className: 'white-blue',
-        page: 'profilePasswordEdit'
-      },
-      { label: 'Выйти', className: 'white-red', page: 'login' }
-    ]
-  },
-  profileInfoEdit: {
-    userName: 'Пользователь',
-    returnPage: 'profile',
-    inputs: [
-      {
-        label: 'Почта',
-        name: 'email',
-        type: 'text',
-        value: ''
-      },
-      {
-        label: 'Логин',
-        name: 'login',
-        type: 'text',
-        value: ''
-      },
-      {
-        label: 'Имя',
-        name: 'first_name',
-        type: 'text',
-        value: ''
-      },
-      {
-        label: 'Фамилия',
-        name: 'second_name',
-        type: 'text',
-        value: ''
-      },
-      {
-        label: 'Имя в чате',
-        name: 'display_name',
-        type: 'text',
-        value: ''
-      },
-      {
-        label: 'Телефон',
-        name: 'phone',
-        type: 'text',
-        value: ''
-      }
-    ],
-    buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
-  },
-  profilePasswordEdit: {
-    userName: 'Пользователь',
-    returnPage: 'profile',
-    inputs: [
-      {
-        label: 'Старый пароль',
-        name: 'oldPassword',
-        type: 'password'
-      },
-      {
-        label: 'Новый пароль',
-        name: 'newPassword',
-        type: 'password'
-      },
-      {
-        label: 'Повторите новый пароль',
-        name: 'newPassword',
-        type: 'password'
-      }
-    ],
-    buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
-  }
-}
+registerComponent('Header', Components.Header)
+registerComponent('Button', Components.Button)
+registerComponent('Input', Components.Input)
+registerComponent('InputField', Components.InputField)
+registerComponent('InputError', Components.InputError)
+registerComponent('ErrorInfo', Components.ErrorInfo)
+
+// const pageArgs: { [key in PageTypes]: any } = {
+//   chat: {
+//     buttons: [{ label: 'Профиль >', className: 'white-gray', page: 'profile' }],
+//     chanels: [
+//       {
+//         id: '1',
+//         chanelName: 'Иван Иванов',
+//         lastMessageDate: '22.08.2023',
+//         lastMessage: 'Больше мне не пиши',
+//         unreadCount: 1
+//       },
+//       {
+//         id: '2',
+//         chanelName: 'Генадий Генадьев',
+//         lastMessageDate: '24.08.2023',
+//         lastMessage: 'Привет',
+//         unreadCount: 999
+//       }
+//     ]
+//   },
+//   profile: {
+//     userName: 'Пользователь',
+//     returnPage: 'chat',
+//     inputs: [
+//       {
+//         label: 'Почта',
+//         name: 'email',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       },
+//       {
+//         label: 'Логин',
+//         name: 'login',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       },
+//       {
+//         label: 'Имя',
+//         name: 'first_name',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       },
+//       {
+//         label: 'Фамилия',
+//         name: 'second_name',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       },
+//       {
+//         label: 'Имя в чате',
+//         name: 'display_name',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       },
+//       {
+//         label: 'Телефон',
+//         name: 'phone',
+//         type: 'text',
+//         value: '',
+//         disabled: true
+//       }
+//     ],
+//     buttons: [
+//       {
+//         label: 'Изменить данные',
+//         className: 'white-blue',
+//         page: 'profileInfoEdit'
+//       },
+//       {
+//         label: 'Изменить пароль',
+//         className: 'white-blue',
+//         page: 'profilePasswordEdit'
+//       },
+//       { label: 'Выйти', className: 'white-red', page: 'login' }
+//     ]
+//   },
+//   profileInfoEdit: {
+//     userName: 'Пользователь',
+//     returnPage: 'profile',
+//     inputs: [
+//       {
+//         label: 'Почта',
+//         name: 'email',
+//         type: 'text',
+//         value: ''
+//       },
+//       {
+//         label: 'Логин',
+//         name: 'login',
+//         type: 'text',
+//         value: ''
+//       },
+//       {
+//         label: 'Имя',
+//         name: 'first_name',
+//         type: 'text',
+//         value: ''
+//       },
+//       {
+//         label: 'Фамилия',
+//         name: 'second_name',
+//         type: 'text',
+//         value: ''
+//       },
+//       {
+//         label: 'Имя в чате',
+//         name: 'display_name',
+//         type: 'text',
+//         value: ''
+//       },
+//       {
+//         label: 'Телефон',
+//         name: 'phone',
+//         type: 'text',
+//         value: ''
+//       }
+//     ],
+//     buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
+//   },
+//   profilePasswordEdit: {
+//     userName: 'Пользователь',
+//     returnPage: 'profile',
+//     inputs: [
+//       {
+//         label: 'Старый пароль',
+//         name: 'oldPassword',
+//         type: 'password'
+//       },
+//       {
+//         label: 'Новый пароль',
+//         name: 'newPassword',
+//         type: 'password'
+//       },
+//       {
+//         label: 'Повторите новый пароль',
+//         name: 'newPassword',
+//         type: 'password'
+//       }
+//     ],
+//     buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
+//   }
+// }
 
 const pages: { [key in PageTypes]: any } = {
-  login: [Pages.EntryPage],
-  registration: [Pages.EntryPage],
-  error404: [Pages.ErrorPage],
-  error500: [Pages.ErrorPage],
-  chat: [Pages.ChatPage],
-  profile: [Pages.ProfilePage],
-  profileInfoEdit: [Pages.ProfilePage],
-  profilePasswordEdit: [Pages.ProfilePage]
+  login: Pages.LoginPage,
+  registration: Pages.RegistrationPage,
+  error500: Pages.Error500Page,
+  error404: Pages.Error404Page
+  // chat: [Pages.ChatPage],
+  // profile: [Pages.ProfilePage],
+  // profileInfoEdit: [Pages.ProfilePage],
+  // profilePasswordEdit: [Pages.ProfilePage]
 }
 
-const navigate = (page: PageTypes): void => {
-  const [source] = pages[page]
-  const args = pageArgs[page]
+const navigate = (): void => {
+  const app = document.getElementById('app')
 
-  const main = document.getElementById('app')
-  if (main) main.innerHTML = Handlebars.compile(source)(args)
+  const params = new URLSearchParams(document.location.search)
+  const page = (params.get('page') as PageTypes) ?? undefined
+
+  const Component = page ? pages[page] : pages.login
+  const component = new Component()
+  if (app) app.innerHTML = ''
+  app?.append(component.getContent())
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  navigate('login')
+  navigate()
 })
 
-document.addEventListener('click', (e) => {
-  const page = (e?.target as HTMLElement)?.getAttribute?.('page')
-  if (page) {
-    navigate(page as PageTypes)
-
-    e.preventDefault()
-    e.stopImmediatePropagation()
-  }
+window.addEventListener('popstate', () => {
+  navigate()
 })
