@@ -1,18 +1,60 @@
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
+import {
+  validateEmail,
+  validateLogin,
+  validateName,
+  validatePassword,
+  validatePhone
+} from 'utils/validators'
 
 export class RegistrationPage extends Block {
   constructor() {
     super({
       title: 'Регистрация',
       inputs: [
-        { label: 'Почта', name: 'email', type: 'text' },
-        { label: 'Логин', name: 'login', type: 'password' },
-        { label: 'Имя', name: 'first_name', type: 'password' },
-        { label: 'Фамилия', name: 'second_name', type: 'password' },
-        { label: 'Телефон', name: 'phone', type: 'password' },
-        { label: 'Пароль', name: 'password', type: 'password' },
-        { label: 'Пароль (еще раз)', name: 'password', type: 'password' }
+        {
+          label: 'Почта',
+          name: 'email',
+          type: 'text',
+          validate: (value: string) => validateEmail(value)
+        },
+        {
+          label: 'Логин',
+          name: 'login',
+          type: 'text',
+          validate: (value: string) => validateLogin(value)
+        },
+        {
+          label: 'Имя',
+          name: 'first_name',
+          type: 'text',
+          validate: (value: string) => validateName(value)
+        },
+        {
+          label: 'Фамилия',
+          name: 'second_name',
+          type: 'text',
+          validate: (value: string) => validateName(value)
+        },
+        {
+          label: 'Телефон',
+          name: 'phone',
+          type: 'text',
+          validate: (value: string) => validatePhone(value)
+        },
+        {
+          label: 'Пароль',
+          name: 'password',
+          type: 'password',
+          validate: (value: string) => validatePassword(value)
+        },
+        {
+          label: 'Пароль (еще раз)',
+          name: 'password_check',
+          type: 'password',
+          validate: (value: string) => validatePassword(value)
+        }
       ],
       buttons: [
         {

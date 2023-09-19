@@ -1,5 +1,11 @@
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
+import {
+  validateEmail,
+  validateLogin,
+  validateName,
+  validatePhone
+} from 'utils/validators'
 
 export class ProfileEditInfo extends Block {
   constructor() {
@@ -9,22 +15,26 @@ export class ProfileEditInfo extends Block {
         {
           label: 'Почта',
           name: 'email',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validateEmail(value)
         },
         {
           label: 'Логин',
           name: 'login',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validateLogin(value)
         },
         {
           label: 'Имя',
           name: 'first_name',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validateName(value)
         },
         {
           label: 'Фамилия',
           name: 'second_name',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validateName(value)
         },
         {
           label: 'Имя в чате',
@@ -34,7 +44,8 @@ export class ProfileEditInfo extends Block {
         {
           label: 'Телефон',
           name: 'phone',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validatePhone(value)
         }
       ],
       buttons: [

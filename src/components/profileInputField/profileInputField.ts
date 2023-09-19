@@ -34,6 +34,7 @@ export class ProfileInputField extends Block {
   protected render(): string {
     return `
     <div class="profile-input-wrapper">
+    <div class="profile-input-inner-wrapper">
       <label for="{{name}}" class="profile-input-label">{{label}}</label>
       {{{ ProfileInput
         ref="input"
@@ -41,7 +42,8 @@ export class ProfileInputField extends Block {
         placeholder=label
         disabled=disabled
       }}}
-      {{{ ValidationError error=error ref="errorLine"}}}
+    </div>
+    {{{ ValidationError error=error ref="errorLine" rightAlign="true" }}}
     </div>
         `
   }

@@ -3,6 +3,12 @@
 .profile-input-wrapper {
   display: flex;
   margin: 10px 0;
+  flex-direction: column;
+}
+
+.profile-input-inner-wrapper {
+  display: flex;
+  margin: 10px 0 0 0;
 }
 
 .profile-input-label {
@@ -10,4 +16,6 @@
   font-weight: 500;
   line-height: 2em;
   border-bottom: 1px solid @lightGray-color;
+  user-select: none;
+  pointer-events: none;
 }

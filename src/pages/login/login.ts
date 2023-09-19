@@ -9,11 +9,7 @@ export class LoginPage extends Block {
         {
           label: 'Логин',
           name: 'login',
-          type: 'text',
-          validate: (value: string) =>
-            value?.length >= 3
-              ? ''
-              : 'Длина логина должна быть не менее 3х символов'
+          type: 'text'
         },
         {
           label: 'Пароль',
@@ -37,6 +33,7 @@ export class LoginPage extends Block {
             )
 
             console.log(form)
+            changeUrl(event, 'chat')
           }
         },
         {

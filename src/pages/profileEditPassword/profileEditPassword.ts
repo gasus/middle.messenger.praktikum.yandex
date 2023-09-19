@@ -1,5 +1,6 @@
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
+import { validatePassword } from 'utils/validators'
 
 export class ProfileEditPassword extends Block {
   constructor() {
@@ -14,12 +15,14 @@ export class ProfileEditPassword extends Block {
         {
           label: 'Новый пароль',
           name: 'newPassword',
-          type: 'password'
+          type: 'password',
+          validate: (value: string) => validatePassword(value)
         },
         {
           label: 'Повторите новый пароль',
-          name: 'newPassword',
-          type: 'password'
+          name: 'newPassword_check',
+          type: 'password',
+          validate: (value: string) => validatePassword(value)
         }
       ],
       buttons: [
