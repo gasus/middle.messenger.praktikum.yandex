@@ -4,10 +4,11 @@ interface IProps {
   name: string
   label: string
   type: string
+  hasValue: boolean
   validate?: () => void
 }
 
-export class InputField extends Block {
+export class ProfileInputField extends Block {
   constructor(props: IProps) {
     super({
       ...props,
@@ -32,15 +33,16 @@ export class InputField extends Block {
 
   protected render(): string {
     return `
-            <div class="input-wrapper">
-                {{{ Input
-                    ref="input"
-                    onBlur=onBlur
-                    placeholder=label
-                }}}
-                <label for=name class="input-label">{{label}}</label>
-                {{{ ValidationError error=error ref="errorLine"}}}
-            </div>
+    <div class="profile-input-wrapper">
+      <label for="{{name}}" class="profile-input-label">{{label}}</label>
+      {{{ ProfileInput
+        ref="input"
+        onBlur=onBlur
+        placeholder=label
+        disabled=disabled
+      }}}
+      {{{ ValidationError error=error ref="errorLine"}}}
+    </div>
         `
   }
 }

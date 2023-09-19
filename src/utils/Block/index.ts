@@ -16,7 +16,7 @@ class Block {
   public children: Record<string, Block>
   private readonly eventBus: () => EventBus
   private _element: HTMLElement | null = null
-  private readonly _meta: { props: any }
+  public _meta: { props: any }
 
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus()
@@ -100,7 +100,8 @@ class Block {
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any): boolean {
-    return true
+    const isEqual = oldProps === newProps
+    return true ?? isEqual // TODO
   }
 
   setProps = (nextProps: any): void => {
@@ -177,10 +178,6 @@ class Block {
       }
     })
   }
-
-  // private _createDocumentElement(tagName: string): HTMLElement {
-  //   return document.createElement(tagName)
-  // }
 
   show(): void {
     const content = this.getContent()

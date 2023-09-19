@@ -4,9 +4,9 @@ import { changeUrl } from 'utils/changeUrl'
 export class Error500Page extends Block {
   constructor() {
     super({
-      toLogin: (event: any) => {
+      toLogin: (event: MouseEvent) => {
         event.preventDefault()
-        changeUrl('login')
+        changeUrl(event, 'login')
       }
     })
   }

@@ -9,46 +9,50 @@ export class ProfileEditInfo extends Block {
         {
           label: 'Почта',
           name: 'email',
-          type: 'text',
-          disabled: true
+          type: 'text'
         },
         {
           label: 'Логин',
           name: 'login',
-          type: 'text',
-          disabled: true
+          type: 'text'
         },
         {
           label: 'Имя',
           name: 'first_name',
-          type: 'text',
-          disabled: true
+          type: 'text'
         },
         {
           label: 'Фамилия',
           name: 'second_name',
-          type: 'text',
-          disabled: true
+          type: 'text'
         },
         {
           label: 'Имя в чате',
           name: 'display_name',
-          type: 'text',
-          disabled: true
+          type: 'text'
         },
         {
           label: 'Телефон',
           name: 'phone',
-          type: 'text',
-          disabled: true
+          type: 'text'
         }
       ],
       buttons: [
         {
           label: 'Сохранить',
           customClass: 'blue-white',
-          onClick: () => {
-            console.log('Результат редактирования данных пользователя') // TODO
+          onClick: (event: MouseEvent) => {
+            event.preventDefault()
+            const form = this.props.inputs.reduce(
+              (acc: object, i: { name: string }) => {
+                const name = i.name
+                const value = name && this.refs.form.refs[name]?.value()
+                return { ...acc, [name]: value }
+              },
+              {}
+            )
+
+            console.log(form)
           }
         }
       ],
@@ -60,7 +64,7 @@ export class ProfileEditInfo extends Block {
 
   protected render(): string {
     return `
-        {{{ ProfileBlock userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons }}}
+        {{{ ProfileBlock ref='form' userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons }}}
     `
   }
 }
