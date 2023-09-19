@@ -1,5 +1,9 @@
-export type PageTypes = 'login' | 'registration' | 'error404' | 'error500'
+export type PageTypes =
+  | 'login'
+  | 'registration'
+  | 'error404'
+  | 'error500'
+  | 'profileView'
+  | 'profileEditInfo'
+  | 'profileEditPassword'
 // | 'chat'
-// | 'profile'
-// | 'profileInfoEdit'
-// | 'profilePasswordEdit'

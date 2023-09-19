@@ -4,26 +4,48 @@ import { changeUrl } from 'utils/changeUrl'
 export class LoginPage extends Block {
   constructor() {
     super({
-      validate: {
-        login: (value: string) =>
-          value?.length >= 3
-            ? ''
-            : 'Длина логина должна быть не менее 3х символов'
-      },
-      onLogin: (event: any) => {
-        event.preventDefault()
-        const login = this.refs.login.value()
-        const password = this.refs.password.value()
+      inputs: [
+        {
+          label: 'Логин',
+          name: 'login',
+          type: 'text',
+          validate: (value: string) =>
+            value?.length >= 3
+              ? ''
+              : 'Длина логина должна быть не менее 3х символов'
+        },
+        {
+          label: 'Пароль',
+          name: 'password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          label: 'Авторизоваться',
+          customClass: 'blue-white',
+          onClick: (event: MouseEvent) => {
+            event.preventDefault()
+            const form = this.props.inputs.reduce(
+              (acc: object, i: { name: string }) => {
+                const name = i.name
+                const value = name && this.refs[name]?.value()
+                return { ...acc, [name]: value }
+              },
+              {}
+            )
 
-        console.log({
-          login,
-          password
-        })
-      },
-      toRegistration: (event: any) => {
-        event.preventDefault()
-        changeUrl('registration')
-      }
+            console.log(form)
+          }
+        },
+        {
+          label: 'Нет аккаунта?',
+          customClass: 'white-blue',
+          onClick: (event: MouseEvent) => {
+            changeUrl(event, 'registration')
+          }
+        }
+      ]
     })
   }
 
@@ -32,12 +54,14 @@ export class LoginPage extends Block {
         {{#> EntryForm}}
             {{{ Header label="Вход" }}}
             <div>
-                {{{ InputField label='Логин' ref='login' name='login' type='text' validate=validate.login }}}
-                {{{ InputField label='Пароль' ref='password' name='password' type='password' }}}
+              {{#each inputs}}
+                {{{ InputField label=this.label ref=this.name name=this.name type=this.type validate=this.validate }}}
+              {{/each}}
             </div>
             <div class="login-form-footer">
-                {{{ Button label='Авторизоваться' customClass='blue-white' onClick=onLogin }}}
-                {{{ Button label='Нет аккаунта?' customClass='white-blue' onClick=toRegistration }}}
+              {{#each buttons}}
+                {{{ Button label=this.label customClass=this.customClass onClick=this.onClick }}}
+              {{/each}}
             </div>
         {{/EntryForm}}
     `

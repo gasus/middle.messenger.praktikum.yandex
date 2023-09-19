@@ -13,6 +13,10 @@ registerComponent('Input', Components.Input)
 registerComponent('InputField', Components.InputField)
 registerComponent('InputError', Components.InputError)
 registerComponent('ErrorInfo', Components.ErrorInfo)
+registerComponent('ButtonCircleWithArrow', Components.ButtonCircleWithArrow)
+registerComponent('GoBackBlock', Components.GoBackBlock)
+registerComponent('Avatar', Components.Avatar)
+registerComponent('ProfileBlock', Components.ProfileBlock)
 
 // const pageArgs: { [key in PageTypes]: any } = {
 //   chat: {
@@ -32,67 +36,6 @@ registerComponent('ErrorInfo', Components.ErrorInfo)
 //         lastMessage: 'Привет',
 //         unreadCount: 999
 //       }
-//     ]
-//   },
-//   profile: {
-//     userName: 'Пользователь',
-//     returnPage: 'chat',
-//     inputs: [
-//       {
-//         label: 'Почта',
-//         name: 'email',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       },
-//       {
-//         label: 'Логин',
-//         name: 'login',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       },
-//       {
-//         label: 'Имя',
-//         name: 'first_name',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       },
-//       {
-//         label: 'Фамилия',
-//         name: 'second_name',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       },
-//       {
-//         label: 'Имя в чате',
-//         name: 'display_name',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       },
-//       {
-//         label: 'Телефон',
-//         name: 'phone',
-//         type: 'text',
-//         value: '',
-//         disabled: true
-//       }
-//     ],
-//     buttons: [
-//       {
-//         label: 'Изменить данные',
-//         className: 'white-blue',
-//         page: 'profileInfoEdit'
-//       },
-//       {
-//         label: 'Изменить пароль',
-//         className: 'white-blue',
-//         page: 'profilePasswordEdit'
-//       },
-//       { label: 'Выйти', className: 'white-red', page: 'login' }
 //     ]
 //   },
 //   profileInfoEdit: {
@@ -142,21 +85,21 @@ registerComponent('ErrorInfo', Components.ErrorInfo)
 //     userName: 'Пользователь',
 //     returnPage: 'profile',
 //     inputs: [
-//       {
-//         label: 'Старый пароль',
-//         name: 'oldPassword',
-//         type: 'password'
-//       },
-//       {
-//         label: 'Новый пароль',
-//         name: 'newPassword',
-//         type: 'password'
-//       },
-//       {
-//         label: 'Повторите новый пароль',
-//         name: 'newPassword',
-//         type: 'password'
-//       }
+// {
+//   label: 'Старый пароль',
+//   name: 'oldPassword',
+//   type: 'password'
+// },
+// {
+//   label: 'Новый пароль',
+//   name: 'newPassword',
+//   type: 'password'
+// },
+// {
+//   label: 'Повторите новый пароль',
+//   name: 'newPassword',
+//   type: 'password'
+// }
 //     ],
 //     buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
 //   }
@@ -166,11 +109,11 @@ const pages: { [key in PageTypes]: any } = {
   login: Pages.LoginPage,
   registration: Pages.RegistrationPage,
   error500: Pages.Error500Page,
-  error404: Pages.Error404Page
+  error404: Pages.Error404Page,
+  profileView: Pages.ProfileViewPage,
+  profileEditInfo: Pages.ProfileEditInfo,
+  profileEditPassword: Pages.ProfileEditPassword
   // chat: [Pages.ChatPage],
-  // profile: [Pages.ProfilePage],
-  // profileInfoEdit: [Pages.ProfilePage],
-  // profilePasswordEdit: [Pages.ProfilePage]
 }
 
 const navigate = (): void => {
