@@ -9,6 +9,8 @@
 - Express
 - LESS
 - Handlebars
+- ESLint
+- Stylelint
 
 ## Установка
 
