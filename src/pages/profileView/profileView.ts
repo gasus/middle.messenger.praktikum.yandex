@@ -67,7 +67,7 @@ export class ProfileViewPage extends Block {
         }
       ],
       goBackClick: (event: MouseEvent) => {
-        changeUrl(event, 'login')
+        changeUrl(event, 'chat')
       }
     })
   }

@@ -6,4 +6,4 @@ export type PageTypes =
   | 'profileView'
   | 'profileEditInfo'
   | 'profileEditPassword'
-// | 'chat'
+  | 'chat'

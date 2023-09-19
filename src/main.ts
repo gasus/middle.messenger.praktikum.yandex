@@ -10,28 +10,6 @@ Object.entries(Components).forEach((i) => {
   registerComponent(componentName, component)
 })
 
-// const pageArgs: { [key in PageTypes]: any } = {
-//   chat: {
-//     buttons: [{ label: 'Профиль >', className: 'white-gray', page: 'profile' }],
-//     chanels: [
-//       {
-//         id: '1',
-//         chanelName: 'Иван Иванов',
-//         lastMessageDate: '22.08.2023',
-//         lastMessage: 'Больше мне не пиши',
-//         unreadCount: 1
-//       },
-//       {
-//         id: '2',
-//         chanelName: 'Генадий Генадьев',
-//         lastMessageDate: '24.08.2023',
-//         lastMessage: 'Привет',
-//         unreadCount: 999
-//       }
-//     ]
-//   },
-// }
-
 const pages: { [key in PageTypes]: any } = {
   login: Pages.LoginPage,
   registration: Pages.RegistrationPage,
@@ -39,8 +17,8 @@ const pages: { [key in PageTypes]: any } = {
   error404: Pages.Error404Page,
   profileView: Pages.ProfileViewPage,
   profileEditInfo: Pages.ProfileEditInfo,
-  profileEditPassword: Pages.ProfileEditPassword
-  // chat: Pages.ChatPage,
+  profileEditPassword: Pages.ProfileEditPassword,
+  chat: Pages.ChatPage
 }
 
 const navigate = (): void => {

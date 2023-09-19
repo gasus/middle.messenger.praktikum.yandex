@@ -1,6 +1,13 @@
 import Block from 'utils/Block'
 
 export class ChanelPreview extends Block {
+  constructor(props: object) {
+    super(props)
+    this.props.events = {
+      click: this.props.onClick || (() => {})
+    }
+  }
+
   protected render(): string {
     return `
     <div class="chanel-preview-wrapper">
