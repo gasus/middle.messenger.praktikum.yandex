@@ -4,7 +4,7 @@ export class Header extends Block {
   protected render(): string {
     return `
         <div class="header">
-            {{label}}
+            {{title}}
         </div>
     `
   }

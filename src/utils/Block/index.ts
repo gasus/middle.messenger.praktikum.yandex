@@ -12,7 +12,7 @@ class Block {
 
   public id = nanoid(6)
   protected props: any
-  protected refs: Record<string, Block> = {}
+  public refs: Record<string, Block> = {}
   public children: Record<string, Block>
   private readonly eventBus: () => EventBus
   private _element: HTMLElement | null = null

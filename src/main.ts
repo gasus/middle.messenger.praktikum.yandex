@@ -1,11 +1,8 @@
-import Handlebars from 'handlebars'
 import * as Components from 'components/index'
 import * as Pages from 'pages/index'
 import { type PageTypes } from 'types/PageTypes'
 import './style.less'
 import { registerComponent } from 'utils/registerComponent'
-
-Handlebars.registerPartial('EntryForm', Components.EntryForm)
 
 registerComponent('Header', Components.Header)
 registerComponent('Button', Components.Button)
@@ -17,6 +14,7 @@ registerComponent('ButtonCircleWithArrow', Components.ButtonCircleWithArrow)
 registerComponent('GoBackBlock', Components.GoBackBlock)
 registerComponent('Avatar', Components.Avatar)
 registerComponent('ProfileBlock', Components.ProfileBlock)
+registerComponent('EntryBlock', Components.EntryBlock)
 
 // const pageArgs: { [key in PageTypes]: any } = {
 //   chat: {
@@ -38,71 +36,6 @@ registerComponent('ProfileBlock', Components.ProfileBlock)
 //       }
 //     ]
 //   },
-//   profileInfoEdit: {
-//     userName: 'Пользователь',
-//     returnPage: 'profile',
-//     inputs: [
-//       {
-//         label: 'Почта',
-//         name: 'email',
-//         type: 'text',
-//         value: ''
-//       },
-//       {
-//         label: 'Логин',
-//         name: 'login',
-//         type: 'text',
-//         value: ''
-//       },
-//       {
-//         label: 'Имя',
-//         name: 'first_name',
-//         type: 'text',
-//         value: ''
-//       },
-//       {
-//         label: 'Фамилия',
-//         name: 'second_name',
-//         type: 'text',
-//         value: ''
-//       },
-//       {
-//         label: 'Имя в чате',
-//         name: 'display_name',
-//         type: 'text',
-//         value: ''
-//       },
-//       {
-//         label: 'Телефон',
-//         name: 'phone',
-//         type: 'text',
-//         value: ''
-//       }
-//     ],
-//     buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
-//   },
-//   profilePasswordEdit: {
-//     userName: 'Пользователь',
-//     returnPage: 'profile',
-//     inputs: [
-// {
-//   label: 'Старый пароль',
-//   name: 'oldPassword',
-//   type: 'password'
-// },
-// {
-//   label: 'Новый пароль',
-//   name: 'newPassword',
-//   type: 'password'
-// },
-// {
-//   label: 'Повторите новый пароль',
-//   name: 'newPassword',
-//   type: 'password'
-// }
-//     ],
-//     buttons: [{ label: 'Сохранить', className: 'blue-white', page: 'profile' }]
-//   }
 // }
 
 const pages: { [key in PageTypes]: any } = {
@@ -113,7 +46,7 @@ const pages: { [key in PageTypes]: any } = {
   profileView: Pages.ProfileViewPage,
   profileEditInfo: Pages.ProfileEditInfo,
   profileEditPassword: Pages.ProfileEditPassword
-  // chat: [Pages.ChatPage],
+  // chat: Pages.ChatPage,
 }
 
 const navigate = (): void => {

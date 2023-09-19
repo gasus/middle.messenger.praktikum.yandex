@@ -4,6 +4,7 @@ import { changeUrl } from 'utils/changeUrl'
 export class LoginPage extends Block {
   constructor() {
     super({
+      title: 'Вход',
       inputs: [
         {
           label: 'Логин',
@@ -29,7 +30,7 @@ export class LoginPage extends Block {
             const form = this.props.inputs.reduce(
               (acc: object, i: { name: string }) => {
                 const name = i.name
-                const value = name && this.refs[name]?.value()
+                const value = name && this.refs.form.refs[name]?.value()
                 return { ...acc, [name]: value }
               },
               {}
@@ -51,19 +52,7 @@ export class LoginPage extends Block {
 
   protected render(): string {
     return `
-        {{#> EntryForm}}
-            {{{ Header label="Вход" }}}
-            <div>
-              {{#each inputs}}
-                {{{ InputField label=this.label ref=this.name name=this.name type=this.type validate=this.validate }}}
-              {{/each}}
-            </div>
-            <div class="login-form-footer">
-              {{#each buttons}}
-                {{{ Button label=this.label customClass=this.customClass onClick=this.onClick }}}
-              {{/each}}
-            </div>
-        {{/EntryForm}}
+        {{{ EntryBlock ref='form' title=title inputs=inputs buttons=buttons }}}
     `
   }
 }
