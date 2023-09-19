@@ -4,17 +4,11 @@ import { type PageTypes } from 'types/PageTypes'
 import './style.less'
 import { registerComponent } from 'utils/registerComponent'
 
-registerComponent('Header', Components.Header)
-registerComponent('Button', Components.Button)
-registerComponent('Input', Components.Input)
-registerComponent('InputField', Components.InputField)
-registerComponent('InputError', Components.InputError)
-registerComponent('ErrorInfo', Components.ErrorInfo)
-registerComponent('ButtonCircleWithArrow', Components.ButtonCircleWithArrow)
-registerComponent('GoBackBlock', Components.GoBackBlock)
-registerComponent('Avatar', Components.Avatar)
-registerComponent('ProfileBlock', Components.ProfileBlock)
-registerComponent('EntryBlock', Components.EntryBlock)
+Object.entries(Components).forEach((i) => {
+  const componentName = i[0]
+  const component = i[1]
+  registerComponent(componentName, component)
+})
 
 // const pageArgs: { [key in PageTypes]: any } = {
 //   chat: {
