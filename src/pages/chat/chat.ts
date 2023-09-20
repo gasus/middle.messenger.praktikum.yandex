@@ -69,6 +69,13 @@ export class ChatPage extends Block {
         <div class="chat-main">
           <div class="chat-main-header-wrapper">
             {{{ Avatar userName=chanelName smallRightUsername='true' }}}
+            {{{ ButtonThreedots }}}
+          </div>
+          <div class="chat-main-messages">
+            
+          </div>
+          <div class="chat-main-footer">
+            {{{ ChatFooter }}}
           </div>
         </div>
       {{else}}

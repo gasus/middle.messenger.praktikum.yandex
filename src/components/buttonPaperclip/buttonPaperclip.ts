@@ -4,7 +4,7 @@ interface IProps {
   destination: string
 }
 
-export class ButtonCircleWithArrow extends Block {
+export class ButtonPaperclip extends Block {
   constructor(props: IProps) {
     super(props)
     this.props.events = {
@@ -13,15 +13,11 @@ export class ButtonCircleWithArrow extends Block {
   }
 
   protected render(): string {
-    const { destination } = this.props
     return `
       <button
-        class="button-circle-arrow button-circle-arrow-${destination}"
-        {{#if disabled}}
-          disabled='true'
-        {{/if}}
+        class="button-paperclip"
       >
-        ➔
+        📎
       </button>
     `
   }

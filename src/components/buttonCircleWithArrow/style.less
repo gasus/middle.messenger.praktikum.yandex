@@ -1,11 +1,10 @@
-@import "@style-variables";
+@import '@style-variables';
 
 .button-circle-arrow {
   width: 40px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid transparent;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,4 +18,9 @@
 
 .button-circle-arrow-left {
   transform: rotateY(180deg);
+}
+
+.button-circle-arrow:disabled {
+  background-color: @mediumGray-color;
+  cursor: not-allowed;
 }

@@ -11,7 +11,7 @@ class Block {
   }
 
   public id = nanoid(6)
-  protected props: any
+  public props: any
   public refs: Record<string, Block> = {}
   public children: Record<string, Block>
   private readonly eventBus: () => EventBus
