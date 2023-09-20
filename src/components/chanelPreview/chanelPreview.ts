@@ -26,9 +26,11 @@ export class ChanelPreview extends Block {
       <div class="chanel-preview-message-date">
         {{lastMessageDate}}
       </div>
+      {{#if unreadCount}}
       <div class="chanel-preview-unread-count">
         {{unreadCount}}
       </div>
+      {{/if}}
     </div>
   </div>
     `
