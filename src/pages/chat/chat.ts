@@ -3,34 +3,36 @@ import { changeUrl } from 'utils/changeUrl'
 
 export class ChatPage extends Block {
   constructor() {
-    const onClickChat = (id: number): void => {
-      this.setProps({ ...this.props, id })
-    }
+    const chanelsData = [
+      {
+        id: '1',
+        chanelName: 'Иван Иванов',
+        lastMessageDate: '22.08.2023',
+        lastMessage: 'Больше мне не пиши',
+        unreadCount: 1
+      },
+      {
+        id: '2',
+        chanelName: 'Генадий Генадьев',
+        lastMessageDate: '24.08.2023',
+        lastMessage: 'Привет',
+        unreadCount: 999
+      }
+    ]
+
+    const chanelsDataWithClick = chanelsData.map((i) => {
+      return {
+        ...i,
+        onClick: () => {
+          this.setProps({ ...this.props, id: i.id, chanelName: i.chanelName })
+        }
+      }
+    })
 
     super({
       id: undefined,
-      chanels: [
-        {
-          id: '1',
-          chanelName: 'Иван Иванов',
-          lastMessageDate: '22.08.2023',
-          lastMessage: 'Больше мне не пиши',
-          unreadCount: 1,
-          onClick: () => {
-            onClickChat(1)
-          }
-        },
-        {
-          id: '2',
-          chanelName: 'Генадий Генадьев',
-          lastMessageDate: '24.08.2023',
-          lastMessage: 'Привет',
-          unreadCount: 999,
-          onClick: () => {
-            onClickChat(2)
-          }
-        }
-      ],
+      chanelName: undefined,
+      chanels: chanelsDataWithClick,
       buttons: [
         {
           label: 'Профиль >',
@@ -66,7 +68,7 @@ export class ChatPage extends Block {
       {{#if id}}
         <div class="chat-main">
           <div class="chat-main-header-wrapper">
-            {{{ Avatar userName="Пользователь" }}}
+            {{{ Avatar userName=chanelName smallRightUsername='true' }}}
           </div>
         </div>
       {{else}}
