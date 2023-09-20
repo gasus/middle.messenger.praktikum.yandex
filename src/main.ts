@@ -10,6 +10,7 @@ Object.entries(Components).forEach((i) => {
   registerComponent(componentName, component)
 })
 
+// TODO: Не удалось типизировать
 const pages: { [key in PageTypes]: any } = {
   login: Pages.LoginPage,
   registration: Pages.RegistrationPage,

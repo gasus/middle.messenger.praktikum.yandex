@@ -2,6 +2,9 @@ import EventBus from 'utils/EventBus'
 import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
 
+// TODO: Не удалось типизировать
+type BlockProps = Record<string, any>
+
 class Block {
   static EVENTS = {
     INIT: 'init',
@@ -11,14 +14,14 @@ class Block {
   }
 
   public id = nanoid(6)
-  public props: any
+  public props: BlockProps
   public refs: Record<string, Block> = {}
   public children: Record<string, Block>
   private readonly eventBus: () => EventBus
   private _element: HTMLElement | null = null
-  public _meta: { props: any }
+  public _meta: { props: BlockProps }
 
-  constructor(propsWithChildren: any = {}) {
+  constructor(propsWithChildren: BlockProps = {}) {
     const eventBus = new EventBus()
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren)
@@ -38,11 +41,11 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT)
   }
 
-  _getChildrenAndProps(childrenAndProps: any): {
-    props: Record<string, any>
+  _getChildrenAndProps(childrenAndProps: object): {
+    props: BlockProps
     children: Record<string, Block>
   } {
-    const props: Record<string, any> = {}
+    const props: BlockProps = {}
     const children: Record<string, Block> = {}
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -93,18 +96,22 @@ class Block {
     })
   }
 
+  // TODO: Не удалось типизировать
   private _componentDidUpdate(oldProps: any, newProps: any): void {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any): boolean {
+  protected componentDidUpdate(
+    oldProps: BlockProps,
+    newProps: BlockProps
+  ): boolean {
     const isEqual = oldProps === newProps
     return true ?? isEqual // TODO
   }
 
-  setProps = (nextProps: any): void => {
+  setProps = (nextProps: BlockProps): void => {
     if (!nextProps) {
       return
     }
@@ -134,6 +141,7 @@ class Block {
     return ''
   }
 
+  // TODO: Не удалось типизировать
   private compile(template: string, context: any): DocumentFragment {
     const contextAndStubs = { ...context, __refs: this.refs }
 
@@ -143,6 +151,7 @@ class Block {
 
     temp.innerHTML = html
 
+    // TODO: Не удалось типизировать
     contextAndStubs.__children?.forEach(({ embed }: any) => {
       embed(temp.content)
     })
@@ -154,9 +163,10 @@ class Block {
     return this.element
   }
 
-  value(): any {}
+  value(): any {} // TODO: Не удалось типизировать
 
-  private _makePropsProxy(props: any): void {
+  // TODO: Не удалось типизировать
+  private _makePropsProxy(props: any): BlockProps {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this
 

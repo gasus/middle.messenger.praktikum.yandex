@@ -23,7 +23,7 @@ export class LoginPage extends Block {
           customClass: 'blue-white',
           onClick: (event: MouseEvent) => {
             event.preventDefault()
-            const form = this.props.inputs.reduce(
+            const form = this.props.inputs?.reduce(
               (acc: object, i: { name: string }) => {
                 const name = i.name
                 const value = name && this.refs.form.refs[name]?.value()

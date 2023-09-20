@@ -7,7 +7,7 @@ const METHODS = {
 
 interface RequestOption {
   method: string
-  data?: any
+  data?: any // TODO: Не удалось типизировать
   headers?: Record<string, string>
   timeout?: number
 }
