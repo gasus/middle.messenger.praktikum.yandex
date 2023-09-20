@@ -5,13 +5,11 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    // Bundler mode
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    //  Aliases
     "baseUrl": ".",
     "paths": {
       "@style-variables": ["src/style-variables.less"],
@@ -22,7 +20,6 @@
       "oldComponents/*": ["src/oldComponents/*"],
       "types/*": ["src/types/*"]
     },
-    // Linting
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
