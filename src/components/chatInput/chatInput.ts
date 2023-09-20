@@ -18,6 +18,7 @@ export class ChatInput extends Block {
     return `
             <input
                 class="chat-input"
+                name='message'
                 placeholder='Сообщение'
             />
         `
