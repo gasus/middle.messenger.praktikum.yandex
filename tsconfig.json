@@ -16,8 +16,6 @@
       "utils/*": ["src/utils/*"],
       "pages/*": ["src/pages/*"],
       "components/*": ["src/components/*"],
-      "oldPages/*": ["src/oldPages/*"],
-      "oldComponents/*": ["src/oldComponents/*"],
       "types/*": ["src/types/*"]
     },
     "strict": true,
