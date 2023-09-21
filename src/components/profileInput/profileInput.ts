@@ -17,6 +17,7 @@ export class ProfileInput extends Block {
   protected render(): string {
     return `
             <input
+                name="{{name}}"
                 class="profile-input"
                 ref="input"
                 {{#if disabled}}

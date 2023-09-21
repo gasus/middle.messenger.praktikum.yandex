@@ -5,6 +5,11 @@ const METHODS = {
   DELETE: 'DELETE'
 }
 
+type HTTPMethod = (
+  url: string,
+  options: RequestOption
+) => Promise<XMLHttpRequest>
+
 interface RequestOption {
   method: string
   data?: any // TODO: Не удалось типизировать
@@ -29,56 +34,24 @@ const queryStringify = (data: Record<string, string | object>): string => {
 }
 
 export class HTTPTransport {
-  get = async (
-    url: string,
-    options: RequestOption
-  ): Promise<XMLHttpRequest> => {
-    return await this.request(
-      url,
-      { ...options, method: METHODS.GET },
-      options.timeout
-    )
+  get: HTTPMethod = async (url, options) => {
+    return await this.request(url, { ...options, method: METHODS.GET })
   }
 
-  post = async (
-    url: string,
-    options: RequestOption
-  ): Promise<XMLHttpRequest> => {
-    return await this.request(
-      url,
-      { ...options, method: METHODS.POST },
-      options.timeout
-    )
+  post: HTTPMethod = async (url, options) => {
+    return await this.request(url, { ...options, method: METHODS.POST })
   }
 
-  put = async (
-    url: string,
-    options: RequestOption
-  ): Promise<XMLHttpRequest> => {
-    return await this.request(
-      url,
-      { ...options, method: METHODS.PUT },
-      options.timeout
-    )
+  put: HTTPMethod = async (url, options) => {
+    return await this.request(url, { ...options, method: METHODS.PUT })
   }
 
-  delete = async (
-    url: string,
-    options: RequestOption
-  ): Promise<XMLHttpRequest> => {
-    return await this.request(
-      url,
-      { ...options, method: METHODS.DELETE },
-      options.timeout
-    )
+  delete: HTTPMethod = async (url, options) => {
+    return await this.request(url, { ...options, method: METHODS.DELETE })
   }
 
-  request = async (
-    url: string,
-    options: RequestOption,
-    timeout: number = 5000
-  ): Promise<XMLHttpRequest> => {
-    const { method, data, headers } = options
+  request: HTTPMethod = async (url, options) => {
+    const { method, data, headers, timeout = 5000 } = options
 
     return await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()

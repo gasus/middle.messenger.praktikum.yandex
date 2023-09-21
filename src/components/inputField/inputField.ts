@@ -36,6 +36,7 @@ export class InputField extends Block {
                 {{{ Input
                     ref="input"
                     onBlur=onBlur
+                    name=name
                     placeholder=label
                 }}}
                 <label for=name class="input-label">{{label}}</label>

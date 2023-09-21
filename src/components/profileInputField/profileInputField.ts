@@ -4,7 +4,6 @@ interface IProps {
   name: string
   label: string
   type: string
-  hasValue: boolean
   validate?: () => void
 }
 
@@ -37,6 +36,7 @@ export class ProfileInputField extends Block {
     <div class="profile-input-inner-wrapper">
       <label for="{{name}}" class="profile-input-label">{{label}}</label>
       {{{ ProfileInput
+        name=name
         ref="input"
         onBlur=onBlur
         placeholder=label

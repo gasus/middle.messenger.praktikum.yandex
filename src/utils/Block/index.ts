@@ -31,7 +31,6 @@ class Block {
     }
 
     this.children = children
-    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
     this.props = this._makePropsProxy(props)
 
     this.eventBus = () => eventBus
@@ -67,6 +66,14 @@ class Block {
     })
   }
 
+  _removeEvents(): void {
+    const { events = {} } = this.props as { events: Record<string, () => void> }
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName])
+    })
+  }
+
   _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
@@ -76,7 +83,6 @@ class Block {
 
   private _init(): void {
     this.init()
-
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
   }
 
@@ -125,6 +131,8 @@ class Block {
 
   private _render(): void {
     const fragment = this.compile(this.render(), this.props)
+
+    this._removeEvents()
 
     const newElement = fragment.firstElementChild as HTMLElement
 

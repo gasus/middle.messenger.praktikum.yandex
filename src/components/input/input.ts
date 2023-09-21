@@ -17,6 +17,7 @@ export class Input extends Block {
   protected render(): string {
     return `
             <input
+                name="{{name}}"
                 class="input"
                 ref="input"
                 placeholder="label"
