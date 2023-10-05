@@ -4,6 +4,7 @@ interface IProps {
   name: string
   label: string
   type: string
+  value?: string
   validate?: () => void
 }
 
@@ -39,6 +40,7 @@ export class ProfileInputField extends Block {
         name=name
         ref="input"
         onBlur=onBlur
+        value=value
         placeholder=label
         disabled=disabled
       }}}

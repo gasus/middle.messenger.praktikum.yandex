@@ -40,7 +40,7 @@ export default class Route {
     const root = document.querySelector(this._props.rootQuery)
     if (root) {
       root.innerHTML = ''
-      root?.append(this._block.getContent() as Node)
+      root?.append(this._block?.getContent() as Node)
     }
   }
 }

@@ -12,7 +12,7 @@ export class ProfileBlock extends Block {
             </div>
             <form class="profile-form">
             {{#each inputs}}
-              {{{ ProfileInputField label=this.label ref=this.name name=this.name type=this.type disabled=this.disabled validate=this.validate }}}
+              {{{ ProfileInputField label=this.label ref=this.name name=this.name value=this.value type=this.type disabled=this.disabled validate=this.validate }}}
             {{/each}}
           </form>
           <div class="profile-info-footer">
