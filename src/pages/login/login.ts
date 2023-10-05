@@ -33,14 +33,14 @@ export class LoginPage extends Block {
             )
 
             console.log(form)
-            changeUrl(event, 'chat')
+            changeUrl(event, 'messenger')
           }
         },
         {
           label: 'Нет аккаунта?',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'registration')
+            changeUrl(event, 'sign-up')
           }
         }
       ]

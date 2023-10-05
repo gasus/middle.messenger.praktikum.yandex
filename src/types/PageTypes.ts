@@ -4,10 +4,10 @@ export type PageTypes = (typeof Pages)[keyof typeof Pages]
 
 export type PageUrls =
   | ''
-  | 'registration'
+  | 'sign-up'
   | 'error404'
   | 'error500'
   | 'profileView'
   | 'profileEditInfo'
   | 'profileEditPassword'
-  | 'chat'
+  | 'messenger'

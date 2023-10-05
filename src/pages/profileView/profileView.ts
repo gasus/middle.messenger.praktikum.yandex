@@ -62,12 +62,12 @@ export class ProfileViewPage extends Block {
           label: 'Выйти',
           customClass: 'white-red',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'login')
+            changeUrl(event, '')
           }
         }
       ],
       goBackClick: (event: MouseEvent) => {
-        changeUrl(event, 'chat')
+        changeUrl(event, 'messenger')
       }
     })
   }
