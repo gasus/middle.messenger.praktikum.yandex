@@ -303,7 +303,7 @@ export class ChatPage extends Block {
           label: 'Профиль >',
           customClass: 'white-gray',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'profileView')
+            changeUrl({ event, path: 'profileView' })
           }
         }
       ]

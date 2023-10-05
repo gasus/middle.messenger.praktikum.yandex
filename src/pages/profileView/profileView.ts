@@ -1,3 +1,4 @@
+import { logout } from 'services/auth'
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
 
@@ -48,26 +49,26 @@ export class ProfileViewPage extends Block {
           label: 'Изменить данные',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'profileEditInfo')
+            changeUrl({ event, path: 'profileEditInfo' })
           }
         },
         {
           label: 'Изменить пароль',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'profileEditPassword')
+            changeUrl({ event, path: 'profileEditPassword' })
           }
         },
         {
           label: 'Выйти',
           customClass: 'white-red',
-          onClick: (event: MouseEvent) => {
-            changeUrl(event, '')
+          onClick: () => {
+            void logout()
           }
         }
       ],
       goBackClick: (event: MouseEvent) => {
-        changeUrl(event, 'messenger')
+        changeUrl({ event, path: 'messenger' })
       }
     })
   }

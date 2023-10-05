@@ -1,5 +1,7 @@
+import { signin } from 'services/auth'
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
+import { validateLogin, validatePassword } from 'utils/validators'
 
 export class LoginPage extends Block {
   constructor() {
@@ -9,12 +11,14 @@ export class LoginPage extends Block {
         {
           label: 'Логин',
           name: 'login',
-          type: 'text'
+          type: 'text',
+          validate: (value: string) => validateLogin(value)
         },
         {
           label: 'Пароль',
           name: 'password',
-          type: 'password'
+          type: 'password',
+          validate: (value: string) => validatePassword(value)
         }
       ],
       buttons: [
@@ -31,16 +35,17 @@ export class LoginPage extends Block {
               },
               {}
             )
-
-            console.log(form)
-            changeUrl(event, 'messenger')
+            const formIsNotValid = Object.values(form).filter((i) => !i).length
+            if (!formIsNotValid) {
+              void signin(form)
+            }
           }
         },
         {
           label: 'Нет аккаунта?',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'sign-up')
+            changeUrl({ event, path: 'sign-up' })
           }
         }
       ]

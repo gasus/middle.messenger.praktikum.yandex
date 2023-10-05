@@ -45,7 +45,7 @@ export class ProfileEditPassword extends Block {
         }
       ],
       goBackClick: (event: MouseEvent) => {
-        changeUrl(event, 'profileView')
+        changeUrl({ event, path: 'profileView' })
       }
     })
   }

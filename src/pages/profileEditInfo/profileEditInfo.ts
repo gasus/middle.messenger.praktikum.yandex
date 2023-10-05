@@ -68,7 +68,7 @@ export class ProfileEditInfo extends Block {
         }
       ],
       goBackClick: (event: MouseEvent) => {
-        changeUrl(event, 'profileView')
+        changeUrl({ event, path: 'profileView' })
       }
     })
   }

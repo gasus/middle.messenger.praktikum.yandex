@@ -16,7 +16,9 @@
       "utils/*": ["src/utils/*"],
       "pages/*": ["src/pages/*"],
       "components/*": ["src/components/*"],
-      "types/*": ["src/types/*"]
+      "types/*": ["src/types/*"],
+      "api/*": ["src/api/*"],
+      "services/*": ["src/services/*"]
     },
     "strict": true,
     "noUnusedLocals": true,

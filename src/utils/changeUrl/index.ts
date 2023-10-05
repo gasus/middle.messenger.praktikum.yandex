@@ -1,6 +1,11 @@
 import { type PageUrls } from 'types/PageTypes'
 
-export const changeUrl = (event: MouseEvent, path: PageUrls): void => {
-  event.preventDefault()
+interface Props {
+  event?: MouseEvent
+  path: PageUrls
+}
+
+export const changeUrl = ({ event, path }: Props): void => {
+  event?.preventDefault()
   window.location.pathname = `/${path}`
 }

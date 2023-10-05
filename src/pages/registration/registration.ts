@@ -1,5 +1,6 @@
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
+import { signup } from 'services/auth'
 import {
   validateEmail,
   validateLogin,
@@ -70,15 +71,17 @@ export class RegistrationPage extends Block {
               },
               {}
             )
-
-            console.log(form)
+            const formIsNotValid = Object.values(form).filter((i) => !i).length
+            if (!formIsNotValid) {
+              void signup(form)
+            }
           }
         },
         {
           label: 'Войти',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, '')
+            changeUrl({ event, path: '' })
           }
         }
       ]
