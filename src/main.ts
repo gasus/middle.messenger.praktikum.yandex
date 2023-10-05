@@ -1,6 +1,6 @@
 import * as Components from 'components/index'
 import * as Pages from 'pages/index'
-import { type PageTypes } from 'types/PageTypes'
+import { type PageUrls, type PageTypes } from 'types/PageTypes'
 import './style.less'
 import { registerComponent } from 'utils/registerComponent'
 
@@ -10,8 +10,7 @@ Object.entries(Components).forEach((i) => {
   registerComponent(componentName, component)
 })
 
-// TODO: Не удалось типизировать
-const pages: { [key in PageTypes]: any } = {
+const pages: { [key in PageUrls]: PageTypes } = {
   login: Pages.LoginPage,
   registration: Pages.RegistrationPage,
   error500: Pages.Error500Page,
@@ -26,12 +25,12 @@ const navigate = (): void => {
   const app = document.getElementById('app')
 
   const params = new URLSearchParams(document.location.search)
-  const page = (params.get('page') as PageTypes) ?? undefined
+  const page = (params.get('page') as PageUrls) ?? undefined
 
   const Component = page ? pages[page] : pages.login
   const component = new Component()
   if (app) app.innerHTML = ''
-  app?.append(component.getContent())
+  app?.append(component.getContent() as Node)
 }
 
 document.addEventListener('DOMContentLoaded', () => {

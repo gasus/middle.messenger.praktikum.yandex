@@ -1,6 +1,6 @@
-import { type PageTypes } from 'types/PageTypes'
+import { type PageUrls } from 'types/PageTypes'
 
-export const changeUrl = (event: MouseEvent, path: PageTypes): void => {
+export const changeUrl = (event: MouseEvent, path: PageUrls): void => {
   event.preventDefault()
   window.location.href = `?page=${path}`
 }
