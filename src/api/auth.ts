@@ -1,15 +1,14 @@
 import { HTTPTransport } from 'utils/HTTPTransport'
-import { type UserCreate } from 'types/UserCreate'
-import { type UserLogin } from 'types/UserLogin'
+import { type UserCreateForm, type UserLoginForm } from 'types/User'
 
 const authApi = new HTTPTransport('/auth')
 
 export default class AuthApi {
-  async create(data: UserCreate): Promise<any> {
+  async create(data: UserCreateForm): Promise<any> {
     return await authApi.post('/signup', { data })
   }
 
-  async login(data: UserLogin): Promise<any> {
+  async login(data: UserLoginForm): Promise<any> {
     return await authApi.post('/signin', { data })
   }
 

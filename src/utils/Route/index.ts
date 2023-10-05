@@ -36,14 +36,11 @@ export default class Route {
   }
 
   render(): void {
-    if (!this._block) {
-      this._block = new this._blockClass()
-      const root = document.querySelector(this._props.rootQuery)
-      if (root) {
-        root?.append(this._block.getContent() as Node)
-      }
+    this._block = new this._blockClass()
+    const root = document.querySelector(this._props.rootQuery)
+    if (root) {
+      root.innerHTML = ''
+      root?.append(this._block.getContent() as Node)
     }
-
-    this._block.show()
   }
 }

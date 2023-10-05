@@ -1,3 +1,4 @@
+import { appRouter } from '../../main'
 import { type PageUrls } from 'types/PageTypes'
 
 interface Props {
@@ -7,5 +8,5 @@ interface Props {
 
 export const changeUrl = ({ event, path }: Props): void => {
   event?.preventDefault()
-  window.location.pathname = `/${path}`
+  appRouter.go(`/${path}`)
 }

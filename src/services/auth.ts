@@ -1,6 +1,5 @@
 import AuthApi from 'api/auth'
-import { type UserCreate } from 'types/UserCreate'
-import { type UserLogin } from 'types/UserLogin'
+import { type UserCreateForm, type UserLoginForm } from 'types/User'
 import { changeUrl } from 'utils/changeUrl'
 
 const authApi = new AuthApi()
@@ -12,10 +11,13 @@ const getUser = async (): Promise<void> => {
     throw Error(response.reason)
   }
 
-  // window.store.set({ user: me })
+  const user = JSON.parse(response.response)
+
+  window.store.set({ user })
+  changeUrl({ path: 'messenger' })
 }
 
-const signin = async (data: UserLogin): Promise<void> => {
+const signin = async (data: UserLoginForm): Promise<void> => {
   const response = await authApi.login(data)
 
   if (response.status !== 200) {
@@ -23,10 +25,9 @@ const signin = async (data: UserLogin): Promise<void> => {
   }
 
   await getUser()
-  changeUrl({ path: 'messenger' })
 }
 
-const signup = async (data: UserCreate): Promise<void> => {
+const signup = async (data: UserCreateForm): Promise<void> => {
   const response = await authApi.create(data)
 
   if (response.status !== 200) {
@@ -34,7 +35,6 @@ const signup = async (data: UserCreate): Promise<void> => {
   }
 
   await getUser()
-  changeUrl({ path: 'messenger' })
 }
 
 const logout = async (): Promise<void> => {

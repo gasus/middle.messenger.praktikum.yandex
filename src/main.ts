@@ -1,8 +1,26 @@
 import * as Components from 'components/index'
 import * as Pages from 'pages/index'
-import './style.less'
+import { type AppState } from 'types/AppState'
 import { registerComponent } from 'utils/registerComponent'
 import Router from 'utils/Router'
+import { Store } from 'utils/Store'
+import { getUser } from 'services/auth'
+import './style.less'
+
+declare global {
+  interface Window {
+    store: Store<AppState>
+  }
+}
+
+const initState: AppState = {
+  error: null,
+  user: null,
+  isOpenDialogChat: false,
+  chats: []
+}
+
+window.store = new Store<AppState>(initState)
 
 Object.entries(Components).forEach((i) => {
   const componentName = i[0]
@@ -10,9 +28,10 @@ Object.entries(Components).forEach((i) => {
   registerComponent(componentName, component)
 })
 
+export const appRouter = new Router('#app')
+
 document.addEventListener('DOMContentLoaded', () => {
-  const router = new Router('#app')
-  router
+  appRouter
     .use('/', Pages.LoginPage)
     .use('/sign-up', Pages.RegistrationPage)
     .use('/error500', Pages.Error500Page)
@@ -22,4 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('/profileEditPassword', Pages.ProfileEditPassword)
     .use('/messenger', Pages.ChatPage)
     .start()
+
+  void getUser()
 })
