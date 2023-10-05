@@ -1,0 +1,22 @@
+@import '@style-variables';
+
+.chat-input {
+  flex: 1;
+  margin: 5px 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 15px;
+  color: @darkGray-color;
+  background-color: @lightGray-color;
+  font-size: 14px;
+}
+
+.chat-input:disabled {
+  background: none;
+}
+
+.chat-input:focus,
+.chat-input:focus-visible {
+  outline: none;
+}

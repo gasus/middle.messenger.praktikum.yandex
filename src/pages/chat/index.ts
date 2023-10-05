@@ -1,2 +1,2 @@
-import "./style.less";
-export { default as ChatPage } from "./index.hbs?raw";
+import './style.less'
+export { ChatPage } from './chat'

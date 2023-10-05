@@ -9,6 +9,8 @@
 - Express
 - LESS
 - Handlebars
+- ESLint
+- Stylelint
 
 ## Установка
 
@@ -16,6 +18,8 @@
 - `npm run dev` — запуск версии для разработчика без сборки
 - `npm run start` — запуск версии для разработчика со сборкой
 - `npm run build` — сборка бандла
+- `npm run eslint` — запуск линтера es (автоматическое исправление)
+- `npm run stylelint` — запуск линтера для стилей
 
 ## Стенд
 

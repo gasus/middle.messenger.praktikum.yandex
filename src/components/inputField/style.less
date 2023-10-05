@@ -1,0 +1,23 @@
+@import '@style-variables';
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 10px 0;
+  position: relative;
+}
+
+.input-label {
+  color: @darkGray-color;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+}
+
+.input:focus + .input-label,
+.input:not(:placeholder-shown) + .input-label {
+  font-size: 0.7em;
+  transform: translate(0, -15px);
+}

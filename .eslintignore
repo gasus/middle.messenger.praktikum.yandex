@@ -1,0 +1,10 @@
+.vite/**/*
+.vscode/**/*
+dist/**/*
+node_modules/**/*
+src/vite-env.d.ts
+.eslintrc.json
+vite.config.js
+server.cjs
+*.less
+*.hbs

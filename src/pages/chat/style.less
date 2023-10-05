@@ -1,4 +1,9 @@
-@import "@style-variables";
+@import '@style-variables';
+
+.chat {
+  display: flex;
+  flex: 1;
+}
 
 .chat-list-wrapper {
   z-index: 10;
@@ -48,8 +53,41 @@
 .chat-main-header-wrapper {
   display: flex;
   flex: 1;
-  max-height: 80px;
+  max-height: 60px;
   margin: 0 20px;
+  padding: 10px 0;
+  box-sizing: border-box;
   border-bottom: 1px solid @mediumGray-color;
-  align-items: center;
+}
+
+.chat-main-messages {
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.chat-main-messages::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+.chat-main-messages::-webkit-scrollbar-thumb {
+  background-color: @darkGray-color;
+}
+
+.chat-main-messages::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.chat-main-footer {
+  display: flex;
+  flex: 1;
+  max-height: 60px;
+  margin: 0 20px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-top: 1px solid @mediumGray-color;
 }

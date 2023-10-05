@@ -1,4 +1,8 @@
-export { EntryPage } from "./entry";
-export { ErrorPage } from "./error";
-export { ProfilePage } from "./profile";
-export { ChatPage } from "./chat";
+export { ChatPage } from './chat'
+export { LoginPage } from './login'
+export { RegistrationPage } from './registration'
+export { Error500Page } from './error500'
+export { Error404Page } from './error404'
+export { ProfileViewPage } from './profileView'
+export { ProfileEditInfo } from './profileEditInfo'
+export { ProfileEditPassword } from './profileEditPassword'

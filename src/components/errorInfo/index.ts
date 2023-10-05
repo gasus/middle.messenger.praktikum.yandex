@@ -1,2 +1,2 @@
-import "./style.less";
-export { default as ErrorInfo } from "./index.hbs?raw";
+import './style.less'
+export { ErrorInfo } from './errorInfo'

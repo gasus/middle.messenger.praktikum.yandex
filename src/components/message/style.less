@@ -1,0 +1,36 @@
+@import '@style-variables';
+
+.message-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message {
+  max-width: 50%;
+  background-color: @lightGray-color;
+  border-radius: 0 15px 15px 15px;
+  padding: 15px 20px 20px 20px;
+  position: relative;
+}
+
+.message-time {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  font-size: 10px;
+  color: @darkGray-color;
+}
+
+.message-from-user-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  .message {
+    background-color: @lightBlue-color;
+    border-radius: 15px 15px 0 15px;
+  }
+
+  .message-time {
+    color: @blue-color;
+  }
+}
