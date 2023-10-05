@@ -78,7 +78,7 @@ export class RegistrationPage extends Block {
           label: 'Войти',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl(event, 'login')
+            changeUrl(event, '')
           }
         }
       ]

@@ -53,3 +53,31 @@ export const isEmpty = (value: any): boolean => {
       return true
   }
 }
+
+type Indexed<T = any> = {
+  [key in string]: T
+}
+
+export const isEqual = (a: Indexed, b: Indexed): boolean => {
+  if (typeof a !== 'object' || typeof b !== 'object') {
+    return a === b
+  }
+
+  const keysA = Object.keys(a)
+  const keysB = Object.keys(b)
+
+  if (keysA.length !== keysB.length) {
+    return false
+  }
+
+  for (const key of keysA) {
+    if (
+      !Object.prototype.hasOwnProperty.call(b, key) ||
+      !isEqual(a[key], b[key])
+    ) {
+      return false
+    }
+  }
+
+  return true
+}
