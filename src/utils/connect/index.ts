@@ -8,6 +8,7 @@ export function connect(
   return function (Component: any) {
     return class extends Component {
       private readonly onChangeStoreCallback: () => void
+
       constructor(props: any) {
         const store = window.store
         let state = mapStateToProps(store.getState())

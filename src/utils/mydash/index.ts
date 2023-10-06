@@ -54,27 +54,42 @@ export const isEmpty = (value: any): boolean => {
   }
 }
 
-type Indexed<T = any> = {
-  [key in string]: T
+type PlainObject<T = any> = {
+  [k in string]: T
 }
 
-export const isEqual = (a: Indexed, b: Indexed): boolean => {
-  if (typeof a !== 'object' || typeof b !== 'object') {
-    return a === b
-  }
+const isPlainObject = (value: unknown): value is PlainObject => {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    value.constructor === Object &&
+    Object.prototype.toString.call(value) === '[object Object]'
+  )
+}
 
-  const keysA = Object.keys(a)
-  const keysB = Object.keys(b)
+const isArray = (value: unknown): value is [] => {
+  return Array.isArray(value)
+}
 
-  if (keysA.length !== keysB.length) {
+const isArrayOrObject = (value: unknown): value is [] | PlainObject => {
+  return isPlainObject(value) || isArray(value)
+}
+
+export const isEqual = (lhs: PlainObject, rhs: PlainObject): boolean => {
+  if (Object.keys(lhs).length !== Object.keys(rhs).length) {
     return false
   }
 
-  for (const key of keysA) {
-    if (
-      !Object.prototype.hasOwnProperty.call(b, key) ||
-      !isEqual(a[key], b[key])
-    ) {
+  for (const [key, value] of Object.entries(lhs)) {
+    const rightValue = rhs[key]
+    if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+      if (isEqual(value, rightValue)) {
+        continue
+      }
+      return false
+    }
+
+    if (value !== rightValue) {
       return false
     }
   }

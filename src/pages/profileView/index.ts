@@ -1,1 +1,3 @@
-export { ProfileViewPage } from './profileView'
+import ProfileViewPage from './profileView'
+
+export default ProfileViewPage
