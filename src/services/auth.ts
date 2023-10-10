@@ -1,6 +1,7 @@
 import AuthApi from 'api/auth'
 import { type UserCreateForm, type UserLoginForm } from 'types/User'
 import { changeUrl } from 'utils/changeUrl'
+import { showError } from 'utils/showError'
 
 const authApi = new AuthApi()
 
@@ -21,7 +22,7 @@ const signin = async (data: UserLoginForm): Promise<void> => {
   const response = await authApi.login(data)
 
   if (response.status !== 200) {
-    throw Error(response.reason)
+    showError(response)
   }
 
   await getUser()
@@ -31,7 +32,7 @@ const signup = async (data: UserCreateForm): Promise<void> => {
   const response = await authApi.create(data)
 
   if (response.status !== 200) {
-    throw Error(response.reason)
+    showError(response)
   }
 
   await getUser()
