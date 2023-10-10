@@ -45,7 +45,7 @@ const logout = async (): Promise<void> => {
   }
 
   changeUrl({ path: '' })
-  // window.store.set({ user: null, chats: [] })
+  window.store.set({ user: null, chats: [] })
 }
 
 export { signup, signin, logout, getUser }

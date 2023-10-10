@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('/error500', Pages.Error500Page)
     .use('/error404', Pages.Error404Page)
     .use('/profileView', Pages.ProfileViewPage)
-    .use('/profileEditInfo', Pages.ProfileEditInfo)
-    .use('/profileEditPassword', Pages.ProfileEditPassword)
     .use('/messenger', Pages.ChatPage)
     .start()
 

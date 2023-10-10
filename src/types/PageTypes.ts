@@ -8,6 +8,4 @@ export type PageUrls =
   | 'error404'
   | 'error500'
   | 'profileView'
-  | 'profileEditInfo'
-  | 'profileEditPassword'
   | 'messenger'

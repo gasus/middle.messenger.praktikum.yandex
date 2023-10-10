@@ -1,4 +1,5 @@
 import { logout } from 'services/auth'
+import { changeUserPassword, changeUserProfile } from 'services/user'
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
 import { connect } from 'utils/connect'
@@ -171,7 +172,13 @@ class ProfileViewPage extends Block {
               {}
             )
 
-            console.log(form)
+            void changeUserPassword(form).then(() => {
+              this.setProps({
+                ...this.props,
+                inputs: inputs.view,
+                buttons: buttons.view
+              })
+            })
           }
         },
         {
@@ -201,7 +208,13 @@ class ProfileViewPage extends Block {
               {}
             )
 
-            console.log(form)
+            void changeUserProfile(form).then(() => {
+              this.setProps({
+                ...this.props,
+                inputs: inputs.view,
+                buttons: buttons.view
+              })
+            })
           }
         },
         {
@@ -230,7 +243,7 @@ class ProfileViewPage extends Block {
 
   protected render(): string {
     return `
-        {{{ ProfileBlock userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons }}}
+        {{{ ProfileBlock ref='form' userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons }}}
     `
   }
 }
