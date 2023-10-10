@@ -1,0 +1,28 @@
+@import '@style-variables';
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.error-message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: @lightRed-color;
+  color: @white-color;
+  padding: 10px;
+  z-index: 10;
+  animation: 6s opacity;
+  opacity: 0;
+}

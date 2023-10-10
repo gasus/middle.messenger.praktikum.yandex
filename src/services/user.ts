@@ -4,6 +4,7 @@ import {
   type UserEditForm,
   type UserEditPasswordForm
 } from 'types/User'
+import { showError } from 'utils/showError'
 
 const authApi = new UserApi()
 
@@ -11,7 +12,7 @@ const changeUserProfile = async (data: UserEditForm): Promise<User> => {
   const response = await authApi.changeProfile(data)
 
   if (response.status !== 200) {
-    throw Error(response.reason)
+    showError(response)
   }
 
   const user = JSON.parse(response.response)
@@ -25,7 +26,7 @@ const changeUserAvatar = async (data: Blob): Promise<User> => {
   const response = await authApi.changeAvatar(data)
 
   if (response.status !== 200) {
-    throw Error(response.reason)
+    showError(response)
   }
 
   const user = JSON.parse(response.response)
@@ -40,7 +41,7 @@ const changeUserPassword = async (
   const response = await authApi.changePassword(data)
 
   if (response.status !== 200) {
-    throw Error(response.reason)
+    showError(response)
   }
 
   const user = JSON.parse(response.response)

@@ -74,7 +74,7 @@ class ProfileViewPage extends Block {
         },
         {
           label: 'Повторите новый пароль',
-          name: 'newPassword_check',
+          name: 'newPassword',
           type: 'password',
           validate: (value: string) => validatePassword(value)
         }
@@ -173,11 +173,7 @@ class ProfileViewPage extends Block {
             )
 
             void changeUserPassword(form).then(() => {
-              this.setProps({
-                ...this.props,
-                inputs: inputs.view,
-                buttons: buttons.view
-              })
+              changeUrl({ event, path: 'profileView' })
             })
           }
         },
@@ -209,11 +205,7 @@ class ProfileViewPage extends Block {
             )
 
             void changeUserProfile(form).then(() => {
-              this.setProps({
-                ...this.props,
-                inputs: inputs.view,
-                buttons: buttons.view
-              })
+              changeUrl({ event, path: 'profileView' })
             })
           }
         },

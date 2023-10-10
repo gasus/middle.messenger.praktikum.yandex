@@ -16,10 +16,20 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  position: relative;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+#error {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -10;
 }
