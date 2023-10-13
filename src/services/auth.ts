@@ -12,7 +12,11 @@ const getUser = async (): Promise<void> => {
     throw Error(response.reason)
   }
 
-  const user = JSON.parse(response.response)
+  const userRaw = JSON.parse(response.response)
+  const user = {
+    ...userRaw,
+    avatar: `https://ya-praktikum.tech/api/v2/resources${userRaw.avatar}`
+  }
 
   window.store.set({ user })
   changeUrl({ path: 'messenger' })

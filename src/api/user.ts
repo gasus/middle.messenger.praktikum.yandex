@@ -8,7 +8,7 @@ export default class UserApi {
     return await authApi.put('/profile', { data })
   }
 
-  async changeAvatar(data: Blob): Promise<any> {
+  async changeAvatar(data: FormData): Promise<any> {
     return await authApi.put('/profile/avatar', { data })
   }
 

@@ -1,0 +1,1 @@
+export { ProfileAvatarInput } from './profileAvatarInput'

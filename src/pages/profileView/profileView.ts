@@ -1,5 +1,9 @@
 import { logout } from 'services/auth'
-import { changeUserPassword, changeUserProfile } from 'services/user'
+import {
+  changeUserAvatar,
+  changeUserPassword,
+  changeUserProfile
+} from 'services/user'
 import Block from 'utils/Block'
 import { changeUrl } from 'utils/changeUrl'
 import { connect } from 'utils/connect'
@@ -224,9 +228,29 @@ class ProfileViewPage extends Block {
     }
 
     super({
+      avatarLink: user?.avatar,
       userName: user?.display_name,
       inputs: inputs.view,
       buttons: buttons.view,
+      modalVisibility: false,
+      onClickAvatar: () => {
+        this.setProps({
+          ...this.props,
+          modalVisibility: true
+        })
+      },
+      updateAvatar: (event: MouseEvent) => {
+        event.preventDefault()
+
+        const avatar = this.refs.form.refs.avatarFile?.value()
+        void changeUserAvatar(avatar).then(() => {
+          this.setProps({
+            ...this.props,
+            modalVisibility: false
+          })
+          changeUrl({ event, path: 'profileView' })
+        })
+      },
       goBackClick: (event: MouseEvent) => {
         changeUrl({ event, path: 'messenger' })
       }
@@ -235,7 +259,7 @@ class ProfileViewPage extends Block {
 
   protected render(): string {
     return `
-        {{{ ProfileBlock ref='form' userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons }}}
+        {{{ ProfileBlock ref='form' avatarLink=avatarLink userName=userName goBackClick=goBackClick inputs=inputs buttons=buttons modalVisibility=modalVisibility onClickAvatar=onClickAvatar updateAvatar=updateAvatar }}}
     `
   }
 }

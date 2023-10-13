@@ -84,7 +84,6 @@ export class HTTPTransport {
       const isGet = method === METHODS.GET
       xhr.open(method, isGet && !!data ? `${url}?${queryStringify(data)}` : url)
 
-      xhr.setRequestHeader('Content-Type', 'application/json')
       for (const key in headers) {
         xhr.setRequestHeader(key, data[key])
       }
@@ -99,14 +98,13 @@ export class HTTPTransport {
       xhr.onerror = reject
       xhr.ontimeout = reject
 
-      if (method === METHODS.GET) {
+      if (method === METHODS.GET || method === METHODS.DELETE || !data) {
         xhr.send()
-      } else if (method === METHODS.POST) {
-        data ? xhr.send(JSON.stringify(data)) : xhr.send()
-      } else if (method === METHODS.PUT) {
-        data ? xhr.send(JSON.stringify(data)) : xhr.send()
-      } else if (method === METHODS.DELETE) {
-        xhr.send()
+      } else if (data instanceof FormData) {
+        xhr.send(data)
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.send(JSON.stringify(data))
       }
     })
   }

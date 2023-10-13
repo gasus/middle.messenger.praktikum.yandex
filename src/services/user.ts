@@ -15,21 +15,30 @@ const changeUserProfile = async (data: UserEditForm): Promise<User> => {
     showError(response)
   }
 
-  const user = JSON.parse(response.response)
+  const userRaw = JSON.parse(response.response)
+  const user = {
+    ...userRaw,
+    avatar: `https://ya-praktikum.tech/api/v2/resources${userRaw.avatar}`
+  }
 
   window.store.set({ user })
   return user
 }
 
-// TODO: Начать использовать
-const changeUserAvatar = async (data: Blob): Promise<User> => {
-  const response = await authApi.changeAvatar(data)
+const changeUserAvatar = async (file: File): Promise<User> => {
+  const payload = new FormData()
+  payload.append('avatar', file)
+  const response = await authApi.changeAvatar(payload)
 
   if (response.status !== 200) {
     showError(response)
   }
 
-  const user = JSON.parse(response.response)
+  const userRaw = JSON.parse(response.response)
+  const user = {
+    ...userRaw,
+    avatar: `https://ya-praktikum.tech/api/v2/resources${userRaw.avatar}`
+  }
 
   window.store.set({ user })
   return user
@@ -44,7 +53,11 @@ const changeUserPassword = async (
     showError(response)
   }
 
-  const user = JSON.parse(response.response)
+  const userRaw = JSON.parse(response.response)
+  const user = {
+    ...userRaw,
+    avatar: `https://ya-praktikum.tech/api/v2/resources${userRaw.avatar}`
+  }
 
   window.store.set({ user })
 }
