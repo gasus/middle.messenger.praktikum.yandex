@@ -36,7 +36,7 @@ export default class Route {
   }
 
   render(): void {
-    this._block = new this._blockClass()
+    this._block = new this._blockClass(undefined) as Block
     const root = document.querySelector(this._props.rootQuery)
     if (root) {
       root.innerHTML = ''
