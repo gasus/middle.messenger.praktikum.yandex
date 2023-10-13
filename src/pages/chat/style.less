@@ -19,7 +19,13 @@
 
 .chat-to-profile-button-wrapper {
   margin: 0 10px;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+
+  .button {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 .chat-chanels {
@@ -58,6 +64,14 @@
   padding: 10px 0;
   box-sizing: border-box;
   border-bottom: 1px solid @mediumGray-color;
+
+  .button {
+    margin: 0;
+  }
+
+  .button + .button {
+    margin-left: 10px;
+  }
 }
 
 .chat-main-messages {

@@ -1,6 +1,6 @@
-export { ChatPage } from './chat'
 export { LoginPage } from './login'
 export { RegistrationPage } from './registration'
 export { Error500Page } from './error500'
 export { Error404Page } from './error404'
 export { default as ProfileViewPage } from './profileView'
+export { default as ChatPage } from './chat'

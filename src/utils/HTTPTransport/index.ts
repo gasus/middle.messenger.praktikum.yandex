@@ -98,7 +98,7 @@ export class HTTPTransport {
       xhr.onerror = reject
       xhr.ontimeout = reject
 
-      if (method === METHODS.GET || method === METHODS.DELETE || !data) {
+      if (method === METHODS.GET || !data) {
         xhr.send()
       } else if (data instanceof FormData) {
         xhr.send(data)

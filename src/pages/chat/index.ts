@@ -1,2 +1,4 @@
 import './style.less'
-export { ChatPage } from './chat'
+import ChatPage from './chat'
+
+export default ChatPage

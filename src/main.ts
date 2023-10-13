@@ -4,7 +4,7 @@ import { type AppState } from 'types/AppState'
 import { registerComponent } from 'utils/registerComponent'
 import Router from 'utils/Router'
 import { Store } from 'utils/Store'
-import { getUser } from 'services/auth'
+import { initApp } from 'services/auth'
 import './style.less'
 
 declare global {
@@ -41,5 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('/messenger', Pages.ChatPage)
     .start()
 
-  void getUser()
+  void initApp()
 })

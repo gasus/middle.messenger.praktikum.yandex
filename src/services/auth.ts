@@ -2,8 +2,15 @@ import AuthApi from 'api/auth'
 import { type UserCreateForm, type UserLoginForm } from 'types/User'
 import { changeUrl } from 'utils/changeUrl'
 import { showError } from 'utils/showError'
+import { getChats } from './chats'
 
 const authApi = new AuthApi()
+
+const initApp = async (): Promise<void> => {
+  await getUser()
+  await getChats()
+  changeUrl({ path: 'messenger' })
+}
 
 const getUser = async (): Promise<void> => {
   const response = await authApi.user()
@@ -19,7 +26,6 @@ const getUser = async (): Promise<void> => {
   }
 
   window.store.set({ user })
-  changeUrl({ path: 'messenger' })
 }
 
 const signin = async (data: UserLoginForm): Promise<void> => {
@@ -53,4 +59,4 @@ const logout = async (): Promise<void> => {
   window.store.set({ user: null, chats: [] })
 }
 
-export { signup, signin, logout, getUser }
+export { signup, signin, logout, getUser, initApp }

@@ -134,7 +134,6 @@ class ProfileViewPage extends Block {
           label: 'Изменить данные',
           customClass: 'white-blue',
           onClick: () => {
-            window.store.set({ user: { ...user, display_name: 'lol' } })
             this.setProps({
               ...this.props,
               inputs: inputs.editInfo,
