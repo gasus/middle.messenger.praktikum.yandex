@@ -17,7 +17,11 @@ export class Avatar extends Block {
           class='avatar-wrapper'
         {{/if}}
       >
-        <img class='avatar-img' src={{avatarLink}} />
+        {{#if avatarLink}}
+          <img class='avatar-img' src={{avatarLink}} />
+        {{else}}
+          <div class='avatar-img'></div>
+        {{/if}}
         {{#if userName}}
           <div class='avatar-name'>
             {{userName}}

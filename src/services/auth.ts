@@ -35,7 +35,7 @@ const signin = async (data: UserLoginForm): Promise<void> => {
     showError(response)
   }
 
-  await getUser()
+  await initApp()
 }
 
 const signup = async (data: UserCreateForm): Promise<void> => {
@@ -45,7 +45,7 @@ const signup = async (data: UserCreateForm): Promise<void> => {
     showError(response)
   }
 
-  await getUser()
+  await initApp()
 }
 
 const logout = async (): Promise<void> => {

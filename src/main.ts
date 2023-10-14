@@ -16,6 +16,8 @@ declare global {
 const initState: AppState = {
   error: null,
   user: null,
+  messages: [],
+  chatToken: null,
   isOpenDialogChat: false,
   settingsMode: 'view',
   chats: []

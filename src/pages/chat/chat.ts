@@ -1,5 +1,13 @@
-import { addChat } from 'services/chats'
+import {
+  addChat,
+  addUserToChat,
+  getChatUsers,
+  getToken,
+  removeUserFromChat
+} from 'services/chats'
+import { type ChatPreview } from 'types/Chats'
 import Block from 'utils/Block'
+import ChatWebSocket from 'utils/Websocket'
 import { changeUrl } from 'utils/changeUrl'
 import { connect } from 'utils/connect'
 
@@ -7,19 +15,35 @@ class ChatPage extends Block {
   constructor() {
     const chats = window.store.getState().chats
 
-    const chanelsDataWithClick = chats?.map((i) => {
-      return {
-        ...i,
-        onClick: () => {
-          this.setProps({
-            ...this.props,
-            id: i.id,
-            chanelName: i.chanelName,
-            messages: i.messages
-          })
+    const addToChatClick = (chats: ChatPreview[]): ChatPreview[] => {
+      return chats?.map((i) => {
+        return {
+          ...i,
+          onClick: async () => {
+            await getToken(i.id).then((token) => {
+              const userId = window.store.getState().user?.id
+              const socket = new ChatWebSocket(userId, i.id, token)
+              socket.create()
+              this.setProps({
+                ...this.props,
+                chatId: i.id,
+                chanelName: i.title,
+                chanelAvatar: i.avatar,
+                socket
+              })
+            })
+            await getChatUsers(i.id).then((chatUsers) => {
+              this.setProps({
+                ...this.props,
+                chatUsers
+              })
+            })
+          }
         }
-      }
-    })
+      })
+    }
+
+    const chanelsDataWithClick = addToChatClick(chats)
 
     const modalInputs = {
       addChat: [
@@ -55,10 +79,12 @@ class ChatPage extends Block {
           customClass: 'blue-white',
           onClick: () => {
             const title = this.refs.modalChat.refs.chat_name?.value()
-            void addChat({ title })
-            this.setProps({
-              ...this.props,
-              createChatVisibility: false
+            void addChat({ title }).then((chats) => {
+              this.setProps({
+                ...this.props,
+                modalVisibility: false,
+                chanels: addToChatClick(chats)
+              })
             })
           }
         }
@@ -67,8 +93,18 @@ class ChatPage extends Block {
         {
           label: 'Добавить',
           customClass: 'blue-white',
-          onClick: () => {
-            // TODO
+          onClick: async () => {
+            const userLogin = this.refs.modalChat.refs.add_user_name?.value()
+            await addUserToChat({
+              chatId: this.props.chatId,
+              login: userLogin
+            })
+            await getChatUsers(this.props.chatId).then((chatUsers) => {
+              this.setProps({
+                ...this.props,
+                chatUsers
+              })
+            })
             this.setProps({
               ...this.props,
               modalVisibility: false
@@ -80,8 +116,19 @@ class ChatPage extends Block {
         {
           label: 'Исключить',
           customClass: 'blue-white',
-          onClick: () => {
-            // TODO
+          onClick: async () => {
+            const userLogin = this.refs.modalChat.refs.remove_user_name?.value()
+            console.log(userLogin)
+            await removeUserFromChat({
+              chatId: this.props.chatId,
+              login: userLogin
+            })
+            await getChatUsers(this.props.chatId).then((chatUsers) => {
+              this.setProps({
+                ...this.props,
+                chatUsers
+              })
+            })
             this.setProps({
               ...this.props,
               modalVisibility: false
@@ -92,13 +139,15 @@ class ChatPage extends Block {
     }
 
     super({
-      id: undefined,
+      chatId: undefined,
       chanelName: undefined,
+      chanelAvatar: undefined,
+      chatUsers: undefined,
       modalVisibility: false,
       modalInputs: modalInputs.addChat,
       modalButtons: modalButtons.addChat,
-      messages: [],
       chanels: chanelsDataWithClick,
+      socket: undefined,
       showModalAddUser: (event: MouseEvent) => {
         event.preventDefault()
         this.setProps({
@@ -116,6 +165,14 @@ class ChatPage extends Block {
           modalInputs: modalInputs.removeUser,
           modalButtons: modalButtons.removeUser
         })
+      },
+      onSend: () => {
+        const element = this?.refs?.chatFooter?.refs?.chatInput
+          ?.element as HTMLInputElement
+        if (element?.value) {
+          this.props.socket.send(element?.value)
+          element.value = ''
+        }
       },
       buttons: [
         {
@@ -145,7 +202,7 @@ class ChatPage extends Block {
   protected render(): string {
     return `
     <div class="chat">
-    {{{ ModalChat ref='modalChat' modalVisibility=modalVisibility onClick=createChat inputs=modalInputs buttons=modalButtons }}}
+    {{{ ModalChat ref='modalChat' modalVisibility=modalVisibility inputs=modalInputs buttons=modalButtons }}}
     <div class="chat-list-wrapper">
       <div class="chat-to-profile-button-wrapper">
         {{#each buttons}}
@@ -156,27 +213,29 @@ class ChatPage extends Block {
       <div class="chat-chanels">
         {{#if chanels}}
           {{#each chanels}}
-            {{{ ChanelPreview chanelName=this.chanelName lastMessage=this.lastMessage lastMessageDate=this.lastMessageDate unreadCount=this.unreadCount onClick=onClick }}}
+            {{{ ChanelPreview chanelName=this.title lastMessage=this.last_message.content lastMessageDate=this.last_message.time avatarLink=this.last_message.user.avatar unreadCount=this.unread_count onClick=onClick }}}
           {{/each}}
         {{else}}
           {{{ Empty }}}
         {{/if}}
       </div>
     </div>
-      {{#if id}}
+      {{#if chatId}}
         <div class="chat-main">
           <div class="chat-main-header-wrapper">
-            {{{ Avatar userName=chanelName smallRightUsername='true' }}}
+            {{{ Avatar userName=chanelName avatarLink=chanelAvatar smallRightUsername='true' }}}
+            {{{ ChatUsers chatUsers=chatUsers }}}
             {{{ Button label='Добавить пользователя' customClass='blue-white' onClick=showModalAddUser }}}
             {{{ Button label='Исключить пользователя' customClass='blue-white' onClick=showModalRemoveUser }}}
           </div>
           <div class="chat-main-messages">
             {{#each messages}}
-              {{{ Message message=this.message isUser=this.isUser time=this.time }}}
+              {{{ Message message=this.content isUser=this.isUser time=this.time }}}
             {{/each}}
           </div>
           <div class="chat-main-footer">
-            {{{ ChatFooter }}}
+            {{{ ChatFooter ref='chatFooter' onClick=onSend }}}
+            {{{ ButtonCircleWithArrow ref='sendButton' onClick=onSend }}}
           </div>
         </div>
       {{else}}
@@ -187,4 +246,4 @@ class ChatPage extends Block {
   }
 }
 
-export default connect(({ chats }) => ({ chats }))(ChatPage)
+export default connect(({ chats, messages }) => ({ chats, messages }))(ChatPage)

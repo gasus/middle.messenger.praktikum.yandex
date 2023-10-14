@@ -17,12 +17,34 @@ export interface ChatCreateForm {
   title: string
 }
 
+export interface ChatAddUserPreForm {
+  login: string
+  chatId: number
+}
+
 export interface ChatAddUserForm {
   users: number[]
+  chatId: number
+}
+
+export interface ChatRemoveUserPreForm {
+  login: string
   chatId: number
 }
 
 export interface ChatRemoveUserForm {
   users: number[]
   chatId: number
+}
+
+export interface Message {
+  chat_id: number
+  content: string
+  file: string
+  id: number
+  is_read: boolean
+  time: string
+  type: string
+  user_id: number
+  isUser: boolean
 }

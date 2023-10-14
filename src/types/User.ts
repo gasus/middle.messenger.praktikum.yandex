@@ -19,20 +19,24 @@ export interface UserCreateForm {
 }
 
 export interface UserEditForm {
-  first_name: 'string'
-  second_name: 'string'
-  display_name: 'string'
-  login: 'string'
-  email: 'string'
-  phone: 'string'
+  first_name: string
+  second_name: string
+  display_name: string
+  login: string
+  email: string
+  phone: string
 }
 
 export interface UserEditPasswordForm {
-  oldPassword: 'string'
-  newPassword: 'string'
+  oldPassword: string
+  newPassword: string
 }
 
 export interface UserLoginForm {
   login: string
   password: string
+}
+
+export interface UserSearchForm {
+  login: string
 }

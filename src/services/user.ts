@@ -1,15 +1,16 @@
 import UserApi from 'api/user'
 import {
+  type UserSearchForm,
   type User,
   type UserEditForm,
   type UserEditPasswordForm
 } from 'types/User'
 import { showError } from 'utils/showError'
 
-const authApi = new UserApi()
+const userApi = new UserApi()
 
 const changeUserProfile = async (data: UserEditForm): Promise<User> => {
-  const response = await authApi.changeProfile(data)
+  const response = await userApi.changeProfile(data)
 
   if (response.status !== 200) {
     showError(response)
@@ -28,7 +29,7 @@ const changeUserProfile = async (data: UserEditForm): Promise<User> => {
 const changeUserAvatar = async (file: File): Promise<User> => {
   const payload = new FormData()
   payload.append('avatar', file)
-  const response = await authApi.changeAvatar(payload)
+  const response = await userApi.changeAvatar(payload)
 
   if (response.status !== 200) {
     showError(response)
@@ -47,7 +48,7 @@ const changeUserAvatar = async (file: File): Promise<User> => {
 const changeUserPassword = async (
   data: UserEditPasswordForm
 ): Promise<void> => {
-  const response = await authApi.changePassword(data)
+  const response = await userApi.changePassword(data)
 
   if (response.status !== 200) {
     showError(response)
@@ -62,4 +63,15 @@ const changeUserPassword = async (
   window.store.set({ user })
 }
 
-export { changeUserProfile, changeUserAvatar, changeUserPassword }
+const userSearch = async (data: UserSearchForm): Promise<number> => {
+  const response = await userApi.search(data)
+
+  if (response.status !== 200) {
+    showError(response)
+  }
+
+  const result = JSON.parse(response.response)?.[0]?.id
+  return result
+}
+
+export { changeUserProfile, changeUserAvatar, userSearch, changeUserPassword }

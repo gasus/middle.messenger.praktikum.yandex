@@ -17,10 +17,18 @@ export default class ChatsApi {
   }
 
   async addUser(data: ChatAddUserForm): Promise<any> {
-    return await chatsApi.put('', { data })
+    return await chatsApi.put('/users', { data })
   }
 
   async removeUser(data: ChatRemoveUserForm): Promise<any> {
-    return await chatsApi.delete('', { data })
+    return await chatsApi.delete('/users', { data })
+  }
+
+  async chatUsers(id: number): Promise<any> {
+    return await chatsApi.get(`/${id}/users`)
+  }
+
+  async token(id: number): Promise<any> {
+    return await chatsApi.post(`/token/${id}`)
   }
 }
