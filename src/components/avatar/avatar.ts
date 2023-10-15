@@ -1,8 +1,14 @@
 import Block from 'utils/Block'
+import { HOST_RESOURCES } from 'utils/constants'
 
 export class Avatar extends Block {
-  constructor(props: object) {
-    super(props)
+  constructor(props: any) {
+    super({
+      ...props,
+      avatarLink: props.avatarLink
+        ? `${HOST_RESOURCES}${props.avatarLink}`
+        : undefined
+    })
     this.props.events = {
       click: this.props.onClick || (() => {})
     }

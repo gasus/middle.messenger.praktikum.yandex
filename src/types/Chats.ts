@@ -17,6 +17,10 @@ export interface ChatCreateForm {
   title: string
 }
 
+export interface ChatDeleteForm {
+  chatId: number
+}
+
 export interface ChatAddUserPreForm {
   login: string
   chatId: number

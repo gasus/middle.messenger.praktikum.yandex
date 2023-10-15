@@ -1,5 +1,6 @@
 import {
   type ChatAddUserForm,
+  type ChatDeleteForm,
   type ChatRemoveUserForm,
   type ChatCreateForm
 } from 'types/Chats'
@@ -9,11 +10,15 @@ const chatsApi = new HTTPTransport('/chats')
 
 export default class ChatsApi {
   async chats(): Promise<any> {
-    return await chatsApi.get('')
+    return await chatsApi.get('', { hasError: false })
   }
 
   async create(data: ChatCreateForm): Promise<any> {
     return await chatsApi.post('', { data })
+  }
+
+  async delete(data: ChatDeleteForm): Promise<any> {
+    return await chatsApi.delete('', { data })
   }
 
   async addUser(data: ChatAddUserForm): Promise<any> {

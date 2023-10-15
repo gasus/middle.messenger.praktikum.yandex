@@ -18,9 +18,11 @@ export class ModalChat extends Block {
             {{#each inputs}}
               {{{ ProfileInputField label=this.label ref=this.name name=this.name value=this.value type=this.type disabled=this.disabled validate=this.validate }}}
             {{/each}}
+            <div class='modal-chat-buttons'>
             {{#each buttons}}
               {{{ Button label=this.label customClass=this.customClass onClick=this.onClick }}}
             {{/each}}
+            </div>
           </div>
         </div>
     `

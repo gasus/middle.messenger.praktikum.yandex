@@ -1,7 +1,6 @@
 import AuthApi from 'api/auth'
 import { type UserCreateForm, type UserLoginForm } from 'types/User'
 import { changeUrl } from 'utils/changeUrl'
-import { showError } from 'utils/showError'
 import { getChats } from './chats'
 
 const authApi = new AuthApi()
@@ -13,47 +12,25 @@ const initApp = async (): Promise<void> => {
 }
 
 const getUser = async (): Promise<void> => {
-  const response = await authApi.user()
-
-  if (response.status !== 200) {
-    throw Error(response.reason)
-  }
-
-  const userRaw = JSON.parse(response.response)
-  const user = {
-    ...userRaw,
-    avatar: `https://ya-praktikum.tech/api/v2/resources${userRaw.avatar}`
-  }
+  const user = await authApi.user()
 
   window.store.set({ user })
 }
 
 const signin = async (data: UserLoginForm): Promise<void> => {
-  const response = await authApi.login(data)
-
-  if (response.status !== 200) {
-    showError(response)
-  }
+  await authApi.login(data)
 
   await initApp()
 }
 
 const signup = async (data: UserCreateForm): Promise<void> => {
-  const response = await authApi.create(data)
-
-  if (response.status !== 200) {
-    showError(response)
-  }
+  await authApi.create(data)
 
   await initApp()
 }
 
 const logout = async (): Promise<void> => {
-  const response = await authApi.logout()
-
-  if (response.status !== 200) {
-    throw Error(response.reason)
-  }
+  await authApi.logout()
 
   changeUrl({ path: '' })
   window.store.set({ user: null, chats: [] })

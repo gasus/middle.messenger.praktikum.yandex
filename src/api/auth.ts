@@ -13,7 +13,7 @@ export default class AuthApi {
   }
 
   async user(): Promise<any> {
-    return await authApi.get('/user')
+    return await authApi.get('/user', { hasError: false })
   }
 
   async logout(): Promise<any> {
