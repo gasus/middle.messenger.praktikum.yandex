@@ -176,7 +176,7 @@ class ProfileViewPage extends Block {
             )
 
             void changeUserPassword(form).then(() => {
-              changeUrl({ event, path: 'profileView' })
+              changeUrl({ event, path: '/profileView' })
             })
           }
         },
@@ -208,7 +208,7 @@ class ProfileViewPage extends Block {
             )
 
             void changeUserProfile(form).then(() => {
-              changeUrl({ event, path: 'profileView' })
+              changeUrl({ event, path: '/profileView' })
             })
           }
         },
@@ -247,11 +247,11 @@ class ProfileViewPage extends Block {
             ...this.props,
             modalVisibility: false
           })
-          changeUrl({ event, path: 'profileView' })
+          changeUrl({ event, path: '/profileView' })
         })
       },
       goBackClick: (event: MouseEvent) => {
-        changeUrl({ event, path: 'messenger' })
+        changeUrl({ event, path: '/messenger' })
       }
     })
   }

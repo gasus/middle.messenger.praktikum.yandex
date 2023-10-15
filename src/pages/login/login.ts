@@ -45,7 +45,7 @@ export class LoginPage extends Block {
           label: 'Нет аккаунта?',
           customClass: 'white-blue',
           onClick: (event: MouseEvent) => {
-            changeUrl({ event, path: 'sign-up' })
+            changeUrl({ event, path: '/sign-up' })
           }
         }
       ]

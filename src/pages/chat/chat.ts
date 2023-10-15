@@ -233,7 +233,7 @@ class ChatPage extends Block {
           label: 'Профиль >',
           customClass: 'white-gray',
           onClick: (event: MouseEvent) => {
-            changeUrl({ event, path: 'profileView' })
+            changeUrl({ event, path: '/profileView' })
           }
         }
       ]

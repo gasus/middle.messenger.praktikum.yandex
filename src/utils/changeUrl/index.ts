@@ -8,5 +8,5 @@ interface Props {
 
 export const changeUrl = ({ event, path }: Props): void => {
   event?.preventDefault()
-  appRouter.go(`/${path}`)
+  appRouter.go(`${path}`)
 }
