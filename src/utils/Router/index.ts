@@ -1,5 +1,5 @@
-import { type PageTypes } from 'types/PageTypes'
-import Route from 'utils/Route'
+import { type PageTypes } from '../../types/PageTypes'
+import Route from '../Route'
 
 type RouteType = any
 

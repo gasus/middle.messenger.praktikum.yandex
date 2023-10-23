@@ -1,5 +1,5 @@
-import { HOST_URL } from 'utils/constants'
-import { showError } from 'utils/showError'
+import { HOST_URL } from '../constants'
+import { showError } from '../showError'
 
 const METHODS = {
   GET: 'GET',

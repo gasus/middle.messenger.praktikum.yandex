@@ -1,5 +1,5 @@
 import Handlebars, { type HelperOptions } from 'handlebars'
-import type Block from 'utils/Block'
+import type Block from '../Block'
 
 export function registerComponent(name: string, Component: typeof Block): void {
   Handlebars.registerHelper(

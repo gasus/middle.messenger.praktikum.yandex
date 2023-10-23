@@ -1,6 +1,6 @@
-import { type AppState } from 'types/AppState'
-import { StoreEvents } from 'utils/Store'
-import { isEqual } from 'utils/mydash'
+import { type AppState } from '../../types/AppState'
+import { StoreEvents } from '../Store'
+import { isEqual } from '../mydash'
 
 export function connect(
   mapStateToProps: (state: AppState) => Partial<AppState>

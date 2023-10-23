@@ -3,8 +3,8 @@ import {
   type ChatDeleteForm,
   type ChatRemoveUserForm,
   type ChatCreateForm
-} from 'types/Chats'
-import { HTTPTransport } from 'utils/HTTPTransport'
+} from '../types/Chats'
+import { HTTPTransport } from '../utils/HTTPTransport'
 
 const chatsApi = new HTTPTransport('/chats')
 

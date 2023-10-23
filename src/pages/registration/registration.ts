@@ -1,13 +1,13 @@
-import Block from 'utils/Block'
-import { changeUrl } from 'utils/changeUrl'
-import { signup } from 'services/auth'
+import Block from '../../utils/Block'
+import { changeUrl } from '../../utils/changeUrl'
+import { signup } from '../../services/auth'
 import {
   validateEmail,
   validateLogin,
   validateName,
   validatePassword,
   validatePhone
-} from 'utils/validators'
+} from '../../utils/validators'
 
 export class RegistrationPage extends Block {
   constructor() {

@@ -1,10 +1,10 @@
-import * as Components from 'components/index'
-import * as Pages from 'pages/index'
-import { type AppState } from 'types/AppState'
-import { registerComponent } from 'utils/registerComponent'
-import Router from 'utils/Router'
-import { Store } from 'utils/Store'
-import { initApp } from 'services/auth'
+import * as Components from './components/index'
+import * as Pages from './pages/index'
+import { type AppState } from './types/AppState'
+import { registerComponent } from './utils/registerComponent'
+import Router from './utils/Router'
+import { Store } from './utils/Store'
+import { initApp } from './services/auth'
 import './style.less'
 
 declare global {

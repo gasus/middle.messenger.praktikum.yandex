@@ -1,10 +1,10 @@
-import UserApi from 'api/user'
+import UserApi from '../api/user'
 import {
   type UserSearchForm,
   type User,
   type UserEditForm,
   type UserEditPasswordForm
-} from 'types/User'
+} from '../types/User'
 
 const userApi = new UserApi()
 

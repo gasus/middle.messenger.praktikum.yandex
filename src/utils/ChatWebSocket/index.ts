@@ -1,5 +1,5 @@
-import { type Message } from 'types/Chats'
-import { HOST_WSS_CHATS } from 'utils/constants'
+import { type Message } from '../../types/Chats'
+import { HOST_WSS_CHATS } from '../constants'
 
 export default class ChatWebSocket {
   public socket: WebSocket | null

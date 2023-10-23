@@ -1,4 +1,4 @@
-import type * as Pages from 'pages/index'
+import type * as Pages from '../pages/index'
 
 export type PageTypes = (typeof Pages)[keyof typeof Pages]
 

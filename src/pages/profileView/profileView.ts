@@ -1,19 +1,19 @@
-import { logout } from 'services/auth'
+import { logout } from '../../services/auth'
 import {
   changeUserAvatar,
   changeUserPassword,
   changeUserProfile
-} from 'services/user'
-import Block from 'utils/Block'
-import { changeUrl } from 'utils/changeUrl'
-import { connect } from 'utils/connect'
+} from '../../services/user'
+import Block from '../../utils/Block'
+import { changeUrl } from '../../utils/changeUrl'
+import { connect } from '../../utils/connect'
 import {
   validateEmail,
   validateLogin,
   validateName,
   validatePassword,
   validatePhone
-} from 'utils/validators'
+} from '../../utils/validators'
 
 class ProfileViewPage extends Block {
   constructor() {

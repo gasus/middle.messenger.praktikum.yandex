@@ -1,5 +1,5 @@
 import { appRouter } from '../../main'
-import { type PageUrls } from 'types/PageTypes'
+import { type PageUrls } from '../../types/PageTypes'
 
 interface Props {
   event?: MouseEvent

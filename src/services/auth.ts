@@ -1,6 +1,6 @@
-import AuthApi from 'api/auth'
-import { type UserCreateForm, type UserLoginForm } from 'types/User'
-import { changeUrl } from 'utils/changeUrl'
+import AuthApi from '../api/auth'
+import { type UserCreateForm, type UserLoginForm } from '../types/User'
+import { changeUrl } from '../utils/changeUrl'
 import { getChats } from './chats'
 
 const authApi = new AuthApi()
