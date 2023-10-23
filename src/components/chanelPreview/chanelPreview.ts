@@ -12,7 +12,7 @@ export class ChanelPreview extends Block {
     return `
     <div class="chanel-preview-wrapper">
     <div class="chanel-preview-avatar">
-      {{{ Avatar }}}
+      {{{ Avatar avatarLink=avatarLink }}}
     </div>
     <div class="chanel-preview-message-wrapper">
       <div class="chanel-name">

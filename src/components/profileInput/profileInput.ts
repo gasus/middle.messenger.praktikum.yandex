@@ -20,6 +20,7 @@ export class ProfileInput extends Block {
                 name="{{name}}"
                 class="profile-input"
                 ref="input"
+                value="{{value}}"
                 {{#if disabled}}
                   disabled="{{disabled}}"
                 {{/if}}

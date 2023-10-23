@@ -6,7 +6,7 @@ export class Error500Page extends Block {
     super({
       toLogin: (event: MouseEvent) => {
         event.preventDefault()
-        changeUrl(event, 'login')
+        changeUrl({ event, path: '/' })
       }
     })
   }

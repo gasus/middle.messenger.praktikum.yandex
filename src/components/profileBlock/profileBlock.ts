@@ -8,11 +8,12 @@ export class ProfileBlock extends Block {
       <div class="profile-info-wrapper">
           <div class="profile-info-content">
             <div class="profile-avatar">
-              {{{ Avatar userName=userName }}}
-            </div>
+              {{{ Avatar avatarLink=avatarLink userName=userName onClick=onClickAvatar }}}
+              </div>
+            {{{ ModalAddAvatar ref='avatarFile' modalVisibility=modalVisibility updateAvatar=updateAvatar }}}
             <form class="profile-form">
             {{#each inputs}}
-              {{{ ProfileInputField label=this.label ref=this.name name=this.name type=this.type disabled=this.disabled validate=this.validate }}}
+              {{{ ProfileInputField label=this.label ref=this.name name=this.name value=this.value type=this.type disabled=this.disabled validate=this.validate }}}
             {{/each}}
           </form>
           <div class="profile-info-footer">

@@ -1,3 +1,6 @@
+import { HOST_URL } from 'utils/constants'
+import { showError } from 'utils/showError'
+
 const METHODS = {
   GET: 'GET',
   POST: 'POST',
@@ -7,6 +10,11 @@ const METHODS = {
 
 type HTTPMethod = (
   url: string,
+  options?: Omit<RequestOption, 'method'>
+) => Promise<XMLHttpRequest>
+
+type HTTPRequest = (
+  url: string,
   options: RequestOption
 ) => Promise<XMLHttpRequest>
 
@@ -15,6 +23,12 @@ interface RequestOption {
   data?: any // TODO: Не удалось типизировать
   headers?: Record<string, string>
   timeout?: number
+  hasError?: boolean
+}
+
+interface AppResponse {
+  response: string
+  status: number
 }
 
 const queryStringify = (data: Record<string, string | object>): string => {
@@ -34,24 +48,42 @@ const queryStringify = (data: Record<string, string | object>): string => {
 }
 
 export class HTTPTransport {
+  private readonly apiUrl: string = ''
+
+  constructor(apiPath: string) {
+    this.apiUrl = `${HOST_URL}${apiPath}`
+  }
+
   get: HTTPMethod = async (url, options) => {
-    return await this.request(url, { ...options, method: METHODS.GET })
+    return await this.request(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHODS.GET
+    })
   }
 
   post: HTTPMethod = async (url, options) => {
-    return await this.request(url, { ...options, method: METHODS.POST })
+    return await this.request(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHODS.POST
+    })
   }
 
   put: HTTPMethod = async (url, options) => {
-    return await this.request(url, { ...options, method: METHODS.PUT })
+    return await this.request(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHODS.PUT
+    })
   }
 
   delete: HTTPMethod = async (url, options) => {
-    return await this.request(url, { ...options, method: METHODS.DELETE })
+    return await this.request(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHODS.DELETE
+    })
   }
 
-  request: HTTPMethod = async (url, options) => {
-    const { method, data, headers, timeout = 5000 } = options
+  private readonly request: HTTPRequest = async (url, options) => {
+    const { method, data, headers, timeout = 5000, hasError = true } = options
 
     return await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
@@ -67,19 +99,31 @@ export class HTTPTransport {
         resolve(xhr)
       }
 
+      xhr.withCredentials = true
       xhr.timeout = timeout
       xhr.onabort = reject
       xhr.onerror = reject
       xhr.ontimeout = reject
 
-      if (method === METHODS.GET) {
+      if (method === METHODS.GET || !data) {
         xhr.send()
-      } else if (method === METHODS.POST) {
-        data ? xhr.send(data) : xhr.send()
-      } else if (method === METHODS.PUT) {
-        data ? xhr.send(data) : xhr.send()
-      } else if (method === METHODS.DELETE) {
-        xhr.send()
+      } else if (data instanceof FormData) {
+        xhr.send(data)
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.send(JSON.stringify(data))
+      }
+    }).then((response) => {
+      try {
+        const result = JSON.parse((response as AppResponse)?.response)
+        if ((response as AppResponse)?.status !== 200) {
+          throw Error(result.reason)
+        } else {
+          return result
+        }
+      } catch (err) {
+        if (hasError) showError(response, hasError)
+        throw Error(err as string)
       }
     })
   }

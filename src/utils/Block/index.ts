@@ -199,12 +199,12 @@ class Block {
 
   show(): void {
     const content = this.getContent()
-    if (content) content.style.display = 'block'
+    if (content && Boolean(false)) content.style.display = 'block'
   }
 
   hide(): void {
     const content = this.getContent()
-    if (content) content.style.display = 'none'
+    if (content && Boolean(false)) content.style.display = 'none'
   }
 }
 

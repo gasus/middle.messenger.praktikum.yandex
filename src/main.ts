@@ -1,8 +1,29 @@
 import * as Components from 'components/index'
 import * as Pages from 'pages/index'
-import { type PageTypes } from 'types/PageTypes'
-import './style.less'
+import { type AppState } from 'types/AppState'
 import { registerComponent } from 'utils/registerComponent'
+import Router from 'utils/Router'
+import { Store } from 'utils/Store'
+import { initApp } from 'services/auth'
+import './style.less'
+
+declare global {
+  interface Window {
+    store: Store<AppState>
+  }
+}
+
+const initState: AppState = {
+  error: null,
+  user: null,
+  messages: [],
+  chatToken: null,
+  isOpenDialogChat: false,
+  settingsMode: 'view',
+  chats: []
+}
+
+window.store = new Store<AppState>(initState)
 
 Object.entries(Components).forEach((i) => {
   const componentName = i[0]
@@ -10,34 +31,17 @@ Object.entries(Components).forEach((i) => {
   registerComponent(componentName, component)
 })
 
-// TODO: Не удалось типизировать
-const pages: { [key in PageTypes]: any } = {
-  login: Pages.LoginPage,
-  registration: Pages.RegistrationPage,
-  error500: Pages.Error500Page,
-  error404: Pages.Error404Page,
-  profileView: Pages.ProfileViewPage,
-  profileEditInfo: Pages.ProfileEditInfo,
-  profileEditPassword: Pages.ProfileEditPassword,
-  chat: Pages.ChatPage
-}
-
-const navigate = (): void => {
-  const app = document.getElementById('app')
-
-  const params = new URLSearchParams(document.location.search)
-  const page = (params.get('page') as PageTypes) ?? undefined
-
-  const Component = page ? pages[page] : pages.login
-  const component = new Component()
-  if (app) app.innerHTML = ''
-  app?.append(component.getContent())
-}
+export const appRouter = new Router('#app')
 
 document.addEventListener('DOMContentLoaded', () => {
-  navigate()
-})
+  appRouter
+    .use('/', Pages.LoginPage)
+    .use('/sign-up', Pages.RegistrationPage)
+    .use('/error500', Pages.Error500Page)
+    .use('/error404', Pages.Error404Page)
+    .use('/profileView', Pages.ProfileViewPage)
+    .use('/messenger', Pages.ChatPage)
+    .start()
 
-window.addEventListener('popstate', () => {
-  navigate()
+  void initApp()
 })

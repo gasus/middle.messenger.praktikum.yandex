@@ -1,6 +1,12 @@
-import { type PageTypes } from 'types/PageTypes'
+import { appRouter } from '../../main'
+import { type PageUrls } from 'types/PageTypes'
 
-export const changeUrl = (event: MouseEvent, path: PageTypes): void => {
-  event.preventDefault()
-  window.location.href = `?page=${path}`
+interface Props {
+  event?: MouseEvent
+  path: PageUrls
+}
+
+export const changeUrl = ({ event, path }: Props): void => {
+  event?.preventDefault()
+  appRouter.go(`${path}`)
 }
