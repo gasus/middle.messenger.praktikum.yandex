@@ -82,7 +82,7 @@ export class HTTPTransport {
     })
   }
 
-  private readonly request: HTTPRequest = async (url, options) => {
+  request: HTTPRequest = async (url, options) => {
     const { method, data, headers, timeout = 5000, hasError = true } = options
 
     return await new Promise((resolve, reject) => {
