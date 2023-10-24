@@ -12,10 +12,10 @@
     "start": "tsc && vite build && node ./server.cjs",
     "build": "tsc && vite build && cp _redirects dist/_redirects",
     "preview": "vite preview",
+    "test": "mocha",
     "lint:eslint": "node_modules/.bin/eslint src/**/* --fix",
     "lint:stylelint": "npx stylelint **/*.less",
-    "lint:all": "npm run eslint && npm run stylelint",
-    "test": "mocha"
+    "lint:all": "npm run eslint && npm run stylelint"
   },
   "husky": {
     "hooks": {
