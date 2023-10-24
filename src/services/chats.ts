@@ -1,12 +1,12 @@
-import ChatsApi from 'api/chats'
+import ChatsApi from '../api/chats'
 import {
   type ChatCreateForm,
   type ChatPreview,
   type ChatAddUserPreForm,
   type ChatRemoveUserPreForm,
   type ChatDeleteForm
-} from 'types/Chats'
-import { type User } from 'types/User'
+} from '../types/Chats'
+import { type User } from '../types/User'
 import { userSearch } from './user'
 
 const chatsApi = new ChatsApi()

@@ -1,5 +1,5 @@
-import { HOST_URL } from 'utils/constants'
-import { showError } from 'utils/showError'
+import { HOST_URL } from '../constants'
+import { showError } from '../showError'
 
 const METHODS = {
   GET: 'GET',
@@ -82,7 +82,7 @@ export class HTTPTransport {
     })
   }
 
-  private readonly request: HTTPRequest = async (url, options) => {
+  request: HTTPRequest = async (url, options) => {
     const { method, data, headers, timeout = 5000, hasError = true } = options
 
     return await new Promise((resolve, reject) => {

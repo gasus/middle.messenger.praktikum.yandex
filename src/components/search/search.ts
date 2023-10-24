@@ -1,4 +1,4 @@
-import Block from 'utils/Block'
+import Block from '../../utils/Block'
 
 export class Search extends Block {
   protected render(): string {

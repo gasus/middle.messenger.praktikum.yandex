@@ -1,5 +1,5 @@
-import { type PageTypes } from 'types/PageTypes'
-import Route from 'utils/Route'
+import { type PageTypes } from '../../types/PageTypes'
+import Route from '../Route'
 
 type RouteType = any
 
@@ -48,7 +48,7 @@ export default class Router {
     }
 
     this._currentRoute = route
-    route.render()
+    route?.render()
   }
 
   go(pathname: string): void {

@@ -1,5 +1,5 @@
-import Block from 'utils/Block'
-import { connect } from 'utils/connect'
+import Block from '../Block'
+import { connect } from '../connect'
 
 class ErrorComponent extends Block {
   protected render(): string {

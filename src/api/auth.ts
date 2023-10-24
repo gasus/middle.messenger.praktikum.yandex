@@ -1,5 +1,5 @@
-import { HTTPTransport } from 'utils/HTTPTransport'
-import { type UserCreateForm, type UserLoginForm } from 'types/User'
+import { HTTPTransport } from '../utils/HTTPTransport'
+import { type UserCreateForm, type UserLoginForm } from '../types/User'
 
 const authApi = new HTTPTransport('/auth')
 

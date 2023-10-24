@@ -5,12 +5,12 @@ import {
   getChatUsers,
   getToken,
   removeUserFromChat
-} from 'services/chats'
-import { type ChatPreview } from 'types/Chats'
-import Block from 'utils/Block'
-import ChatWebSocket from 'utils/ChatWebSocket'
-import { changeUrl } from 'utils/changeUrl'
-import { connect } from 'utils/connect'
+} from '../../services/chats'
+import { type ChatPreview } from '../../types/Chats'
+import Block from '../../utils/Block'
+import ChatWebSocket from '../../utils/ChatWebSocket'
+import { changeUrl } from '../../utils/changeUrl'
+import { connect } from '../../utils/connect'
 
 class ChatPage extends Block {
   constructor() {

@@ -1,7 +1,7 @@
-import { signin } from 'services/auth'
-import Block from 'utils/Block'
-import { changeUrl } from 'utils/changeUrl'
-import { validateLogin, validatePassword } from 'utils/validators'
+import { signin } from '../../services/auth'
+import Block from '../../utils/Block'
+import { changeUrl } from '../../utils/changeUrl'
+import { validateLogin, validatePassword } from '../../utils/validators'
 
 export class LoginPage extends Block {
   constructor() {

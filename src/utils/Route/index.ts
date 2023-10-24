@@ -1,5 +1,5 @@
-import { type PageTypes } from 'types/PageTypes'
-import type Block from 'utils/Block'
+import { type PageTypes } from '../../types/PageTypes'
+import type Block from '../Block'
 
 interface RouteProps {
   rootQuery: string

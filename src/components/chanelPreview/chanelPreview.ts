@@ -1,4 +1,4 @@
-import Block from 'utils/Block'
+import Block from '../../utils/Block'
 
 export class ChanelPreview extends Block {
   constructor(props: object) {

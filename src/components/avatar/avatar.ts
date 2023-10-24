@@ -1,5 +1,5 @@
-import Block from 'utils/Block'
-import { HOST_RESOURCES } from 'utils/constants'
+import Block from '../../utils/Block'
+import { HOST_RESOURCES } from '../../utils/constants'
 
 export class Avatar extends Block {
   constructor(props: any) {

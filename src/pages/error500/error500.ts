@@ -1,5 +1,5 @@
-import Block from 'utils/Block'
-import { changeUrl } from 'utils/changeUrl'
+import Block from '../../utils/Block'
+import { changeUrl } from '../../utils/changeUrl'
 
 export class Error500Page extends Block {
   constructor() {

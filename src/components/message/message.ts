@@ -1,4 +1,4 @@
-import Block from 'utils/Block'
+import Block from '../../utils/Block'
 
 export class Message extends Block {
   protected render(): string {
