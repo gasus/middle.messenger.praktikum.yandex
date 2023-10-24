@@ -7,20 +7,16 @@
     "node": ">=18.17.1"
   },
   "scripts": {
-    "prepare": "husky install",
     "dev": "vite",
     "start": "tsc && vite build && node ./server.cjs",
     "build": "tsc && vite build && cp _redirects dist/_redirects",
     "preview": "vite preview",
     "test": "mocha",
-    "lint:eslint": "node_modules/.bin/eslint src/**/* --fix",
-    "lint:stylelint": "npx stylelint **/*.less",
-    "lint:all": "npm run eslint && npm run stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:all && npm run test"
-    }
+    "lint_eslint": "node_modules/.bin/eslint src/**/* --fix",
+    "lint_stylelint": "npx stylelint **/*.less",
+    "lint_all": "npm run lint_eslint && npm run lint_stylelint",
+    "prepare": "husky install",
+    "pre-commit": "npm run test && npm run lint_all"
   },
   "devDependencies": {
     "@types/chai": "^4.3.9",
@@ -43,7 +39,6 @@
     "stylelint": "^15.10.3",
     "stylelint-config-recommended-less": "^2.0.0",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.5"
   },
